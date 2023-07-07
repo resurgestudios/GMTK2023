@@ -134,3 +134,15 @@ scale = Vector2(15, 15)
 texture = ExtResource("2_aoy67")
 
 [node name="Ink" parent="." instance=ExtResource("5_p4gqa")]
+
+[node name="MapManager" type="Node2D" parent="."]
+script = ExtResource("1_vxup7")
+
+[node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
+
+[node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
+position = Vector2(768, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(568, 290)
+zoom = Vector2(0.5, 0.5)
