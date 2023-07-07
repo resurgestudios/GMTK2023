@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://3xwx3j3copoq"]
+
+[ext_resource type="PackedScene" uid="uid://ce58kx7qj2wlm" path="res://Levels/0.tscn" id="1_4q08t"]
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
+[ext_resource type="PackedScene" uid="uid://cmrn4q5mx75ox" path="res://Levels/1.tscn" id="3_yc0pl"]
+
+[node name="Main" type="Node2D"]
+
+[node name="MapManager" type="Node2D" parent="."]
+script = ExtResource("1_vxup7")
+
+[node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
+
+[node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
+position = Vector2(768, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(568, 290)
+zoom = Vector2(0.5, 0.5)

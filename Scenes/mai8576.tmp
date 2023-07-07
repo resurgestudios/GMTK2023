@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://3xwx3j3copoq"]
+
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="MapManager" type="Node2D" parent="."]
+script = ExtResource("1_vxup7")
