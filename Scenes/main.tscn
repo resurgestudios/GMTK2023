@@ -1,5 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://3xwx3j3copoq"]
 
+[ext_resource type="PackedScene" uid="uid://ce58kx7qj2wlm" path="res://Levels/0.tscn" id="1_4q08t"]
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
+[ext_resource type="PackedScene" uid="uid://cmrn4q5mx75ox" path="res://Levels/1.tscn" id="3_yc0pl"]
+
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
