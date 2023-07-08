@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwytb7btfr43o"]
+[gd_scene load_steps=9 format=3 uid="uid://bwytb7btfr43o"]
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
@@ -9,6 +9,8 @@ size = Vector2(128, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pjfoa"]
 
 [sub_resource type="Gradient" id="Gradient_v0nfe"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -50,7 +52,7 @@ offset_right = 64.0
 offset_bottom = -68.0
 size_flags_horizontal = 3
 value = 100.0
-texture_progress = SubResource("GradientTexture2D_mctw8")
+texture_progress = SubResource("ViewportTexture_pjfoa")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -64.0

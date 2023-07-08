@@ -29,9 +29,8 @@ var timer: float = 0
 func _process(delta):
 	health += regen * delta	
 	health = min(health, 100.0)
-	print(health," ",shield)
-	$Bars/HealthBar.value = health
-	$Bars/ShieldBar.value = shield
+	$HealthBar.value = health
+	$ShieldBar.value = shield
 
 func _physics_process(delta):
 	velocity = target_velocity
@@ -62,7 +61,7 @@ func damage(delta: float):
 	health -= delta
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("boss"):
+	if body.is_in_group("boss") and following == null:
 		$Normal.hide()
 		$Angry.show()
 		following = body

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1n7m6"]
 size = Vector2(64, 26)
 
-[node name="Ink" type="CharacterBody2D"]
+[node name="Ink" type="CharacterBody2D" groups=["paper"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_agwgp")
