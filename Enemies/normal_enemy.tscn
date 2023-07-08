@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
-[ext_resource type="Script" path="res://Enemies/Normal_Enemy_Detect.gd" id="3_o1rtk"]
+[ext_resource type="Script" path="res://Scripts/Normal_Enemy_Detect.gd" id="3_6d4cw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
 size = Vector2(128, 129)
@@ -22,7 +22,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vhaqk")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_o1rtk")
+script = ExtResource("3_6d4cw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0.5)

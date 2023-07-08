@@ -140,3 +140,11 @@ script = ExtResource("1_vxup7")
 position = Vector2(768, 0)
 
 [node name="Navigation" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 15.0
+offset_top = 1025.0
+offset_right = 653.0
+offset_bottom = 1476.0
+text = "qweqweqwe"
