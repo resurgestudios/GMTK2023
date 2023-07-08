@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8xj771vqtt8j"]
+
+[ext_resource type="Script" path="res://Scripts/ink.gd" id="1_agwgp"]
+[ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_f2gtc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n7m6"]
+size = Vector2(64, 26)
+
+[node name="Ink" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_agwgp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.5, 0.2)
+texture = ExtResource("2_f2gtc")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_1n7m6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

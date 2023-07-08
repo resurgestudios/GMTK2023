@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcvld7xtqdd5d"]
+
+[ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
+[ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
+[ext_resource type="Script" path="res://Enemies/Normal_Enemy_Detect.gd" id="3_o1rtk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
+size = Vector2(128, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
+size = Vector2(151, 153)
+
+[node name="Normal_Enemy" type="CharacterBody2D"]
+script = ExtResource("1_qe5o8")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.866667, 0.333333, 0.513726, 1)
+texture = ExtResource("1_5jl2r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vhaqk")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_o1rtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_cqbhl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
