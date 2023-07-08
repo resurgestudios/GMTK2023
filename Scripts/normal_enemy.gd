@@ -1,14 +1,10 @@
 extends CharacterBody2D
 
 
-<<<<<<< Updated upstream
-const speed: int = 100
-=======
 var health: float = 100.0
 var regen: float = 2.0
 var shield: float = 0.0
-const speed: int = 200
->>>>>>> Stashed changes
+const speed: float = 200
 var direction: float = Global.rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
 var updated: bool = false
@@ -30,8 +26,6 @@ func _ready():
 
 var timer: float = 0
 
-<<<<<<< Updated upstream
-=======
 func damage(delta: float):
 	var shield_delta: float = min(delta, shield)
 	shield -= shield_delta
@@ -48,7 +42,6 @@ func _process(delta):
 	$HealthBar.value = health
 	$ShieldBar.value = shield
 
->>>>>>> Stashed changes
 func _physics_process(delta):
 	velocity = target_velocity
 	timer -= delta
@@ -68,19 +61,14 @@ func _physics_process(delta):
 	if collision != null:
 		bounce(collision)
 
-<<<<<<< Updated upstream
 func follow():
 	pass
 
-=======
->>>>>>> Stashed changes
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("boss"):
 		$Normal.hide()
 		$Angry.show()
 		following = body
-<<<<<<< Updated upstream
-=======
 		shield += 50.0
 		body.damage(50.0)
 	if body.is_in_group("printer"):
@@ -100,4 +88,3 @@ func _on_area_2d_area_entered(area):
 func die():
 	# TODO play death animation
 			queue_free()
->>>>>>> Stashed changes

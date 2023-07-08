@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=6 format=3 uid="uid://bwytb7btfr43o"]
-=======
 [gd_scene load_steps=10 format=3 uid="uid://bwytb7btfr43o"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
@@ -14,8 +10,6 @@ size = Vector2(128, 129)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
 
-<<<<<<< Updated upstream
-=======
 [sub_resource type="Gradient" id="Gradient_ukcke"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jd5pj"]
@@ -34,7 +28,6 @@ height = 16
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.184466, 0.42233)
 
->>>>>>> Stashed changes
 [node name="Normal_Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_qe5o8")
 metadata/_edit_group_ = true
