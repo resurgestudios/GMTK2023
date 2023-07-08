@@ -66,8 +66,13 @@ func _on_area_2d_body_entered(body):
 		$Angry.show()
 		following = body
 		shield += 50.0
-	if body.is_in_group("paper"):
+
+
+func _on_area_2d_area_entered(area):
+	print(area.name)
+	if area.is_in_group("paper"):
 		damage(40.0)
+		print(health,shield)
 		if health <= 0.0:
 			# TODO play death animation
 			queue_free()
