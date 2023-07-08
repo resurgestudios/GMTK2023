@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var proj_speed: float = 300.0
+var proj_speed: float = 500.0
 var shoot_range: float = 400.0
 var health: float = 100.0
 var regen: float = 2.0
@@ -67,7 +67,7 @@ func _physics_process(delta):
 		timer = Global.rng.randf_range(0.75, 1.25)
 		var player_pos: Vector2 = get_node("/root/Main/Printer").global_position
 		print("dist",(global_position - player_pos).length())
-		if following != null or ((global_position - player_pos).length() <= shoot_range):
+		if following != null or ((global_position - player_pos).length() <= shoot_range and Global.rng.randi_range(0, 2) == 0):
 			var proj_inst = load("res://Scenes/projectile.tscn").instantiate()
 			get_tree().root.add_child(proj_inst)
 			var angle = global_position.angle_to_point(player_pos)
