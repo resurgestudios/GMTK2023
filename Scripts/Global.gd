@@ -13,8 +13,8 @@ var spawned = false
 
 func _process(delta):
 	if not spawned:
-		spawn_normal_enemies()
-		spawn_boss_enemies()
+		#spawn_normal_enemies()
+		#spawn_boss_enemies()
 		spawned = true
 		
 

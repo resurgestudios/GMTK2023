@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8xj771vqtt8j"]
+[gd_scene load_steps=4 format=3 uid="uid://dlmsd6wryc2qb"]
 
 [ext_resource type="Script" path="res://Scripts/ink.gd" id="1_agwgp"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_f2gtc"]
@@ -7,8 +7,8 @@
 size = Vector2(64, 26)
 
 [node name="Ink" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 0
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_agwgp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

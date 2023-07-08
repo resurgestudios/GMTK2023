@@ -10,7 +10,9 @@ size = Vector2(128, 129)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
 
-[node name="Normal_Enemy" type="CharacterBody2D"]
+[node name="Normal_Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("1_qe5o8")
 metadata/_edit_group_ = true
 
@@ -23,9 +25,12 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vhaqk")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3_o1rtk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_cqbhl")
 

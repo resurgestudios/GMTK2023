@@ -5,6 +5,11 @@ extends Node2D
 @export var variance : float = 4.0 # lower means higher chance of smaller grid blocks
 const section_w : int = 12 # default width and height for 1x1 section
 const section_h : int = 12
+<<<<<<< Updated upstream
+=======
+const tile_w : int = 16
+const tile_h : int = 16
+>>>>>>> Stashed changes
 
 var map = []
 var empty_map = []
@@ -27,6 +32,7 @@ func _ready() -> void:
 			map[map.size() - 1].append(0)
 			empty_map.append([i, j])
 	gen()
+<<<<<<< Updated upstream
 
 
 func gen():
@@ -226,6 +232,8 @@ func create_section(x, y):
 	
 	inst.queue_free()
 	
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -236,7 +244,10 @@ func weighted_random(weights):
 		weights_sum += weight
 
 func gen():
+<<<<<<< Updated upstream
 	pass
+=======
+>>>>>>> Stashed changes
 	# TODO make random picking from empty taken maps instead of left to right up to down
 	randomize()
 	while true:
@@ -343,10 +354,10 @@ func create_section(x, y):
 	var last
 	for i in possible_sizes:
 		weights.append(weight)
-		
+
 		if i[0] * i[1] != last:
 			weight *= variance
-		
+
 		last = i[0] * i[1]
 	
 	weighted_random(weights)
@@ -393,12 +404,53 @@ func create_section(x, y):
 	
 	
 	var inst = load(str).instantiate()
+	add_child(inst)
+	inst.position = Vector2(pos[0] * (section_w - 1) * tile_w, pos[1] * (section_h - 1) * tile_h)
+	
+	#inst.hide()
+	
 	for i in inst.get_used_cells(0):
-		var coords = inst.get_cell_atlas_coords(0, Vector2i(i.x, i.y))
-		$TileMap.set_cell(0, Vector2i(pos[0] * section_w + i.x, pos[1] * section_h + i.y), 0, coords)
+		var a_coords = inst.get_cell_atlas_coords(0, Vector2i(i.x, i.y))
+		
+		#edges of map no doors
+		if pos[0] == 0:
+			if i.x == 0:
+				a_coords = Vector2i(0, 0)
+		
+		if pos[1] == 0:
+			if i.y == 0:
+				a_coords = Vector2i(0, 0)
+		
+		if pos[0] * section_w + i.x == map_w * section_w - 1:
+			a_coords = Vector2i(0, 0)
+		
+		if pos[1] * section_h + i.y == map_h * section_h - 1:
+			a_coords = Vector2i(0, 0)
+			
+		if pos[0] != 0:
+			i.x -= pos[0]
+			
+		if pos[1] != 0:
+			i.y -= pos[1]
+	
+		
+		$TileMap.set_cell(0, Vector2i(pos[0] * section_w + i.x, pos[1] * section_h + i.y), 0, a_coords)
+		#inst.set_cell(0, Vector2i(i.x, pos[1] * i.y), 0, a_coords)
 		
 	
+<<<<<<< Updated upstream
 	inst.queue_free()
+=======
+	#inst.queue_free()
+	
+
+
+func weighted_random(weights):
+	randomize()
+	var weights_sum := 0.0
+	for weight in weights:
+		weights_sum += weight
+>>>>>>> Stashed changes
 	
 	var remaining_distance := randf() * weights_sum
 	for i in weights.size():
