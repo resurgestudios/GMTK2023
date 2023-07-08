@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const speed: int = 50
+const speed: float = 50
 var target_velocity: Vector2
 
 func _ready():
