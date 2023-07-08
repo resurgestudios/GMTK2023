@@ -64,11 +64,6 @@ func _physics_process(delta):
 func follow():
 	pass
 
-func damage(delta: float):
-	var shield_delta: float = min(delta, shield)
-	shield -= shield_delta
-	delta -= shield_delta
-	health -= delta
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("boss") and following == null:
@@ -93,13 +88,7 @@ func _on_area_2d_area_entered(area):
 
 func die():
 	# TODO play death animation
-  pass
+	pass
 
 
-func _on_area_2d_area_entered(area):
-	print(area.name)
-	if area.is_in_group("paper"):
-		damage(40.0)
-		print(health,shield)
-		if health <= 0.0:
-			die()
+
