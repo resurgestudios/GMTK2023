@@ -139,3 +139,12 @@ script = ExtResource("1_vxup7")
 
 [node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
 position = Vector2(768, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 15.0
+offset_top = 1025.0
+offset_right = 653.0
+offset_bottom = 1476.0
+text = "qweqweqwe"

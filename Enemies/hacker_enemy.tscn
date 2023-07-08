@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuf1hq3mlr5uj"]
+
+[ext_resource type="Script" path="res://Scripts/hacker_enemy.gd" id="1_cr3hr"]
+[ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_ruprt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
+size = Vector2(128, 129)
+
+[node name="Hacker_Enemy" type="CharacterBody2D"]
+script = ExtResource("1_cr3hr")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_ruprt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vhaqk")
