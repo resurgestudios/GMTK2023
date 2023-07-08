@@ -2,6 +2,7 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 var root
+var ink = null
 var map: AStarGrid2D
 
 # Called when the node enters the scene tree for the first time.
@@ -11,21 +12,27 @@ func _ready():
 #		await get_tree().create_timer(1).timeout	
 
 var spawned = false
-var ink: float = 1.0
 @export var ink_draw_rate: float = 2
+@export var ink_draw_interval: float = 0.2
+var timer: float = ink_draw_interval
 
-func _process(_delta):
+func _process(delta):
 	if not spawned:
 		spawn_normal_enemies()
 		spawn_boss_enemies()
+		spawn_coffee_enemies()
 		init_navigation()
 		spawn_hacker_enemies()
 		spawned = true
-		
-func _physics_process(delta):
-	ink -= ink_draw_rate * 0.01 * delta;
-	if ink <= 0:
-		die()
+	if ink != null:
+		timer -= delta
+		if timer <= 0.0:
+			timer = ink_draw_interval
+			if ink.retrieve(ink_draw_rate) == 0:
+				die()
+			else:
+				ink.redraw()
+			
 	
 	
 
@@ -56,7 +63,17 @@ func spawn_hacker_enemies():
 		hacker_enemy_inst.position = Vector2(x, y)
 		get_tree().root.add_child(hacker_enemy_inst)
 		
+func spawn_coffee_enemies():
+	for i in range(0, 2):
+		var coffee_enemy_inst = load("res://Enemies/coffee_enemy.tscn").instantiate()
+		var x: int = round(rng.randf_range(0.0, 1920.0))
+		var y: int = round(rng.randf_range(0.0, 1080.0))
+		coffee_enemy_inst.add_to_group("coffee")
+		coffee_enemy_inst.position = Vector2(x, y)
+		get_tree().root.add_child(coffee_enemy_inst)
+		
 func die():
+	print("u died lol")
 	pass
 
 var cell_size: Vector2 = Vector2(64, 64)
@@ -74,4 +91,3 @@ func init_navigation():
 	map.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	map.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
 	map.update()
-	print("pos", map.get_point_position(Vector2i(1, 3)))
