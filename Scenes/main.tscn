@@ -1,13 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=24 format=3 uid="uid://3xwx3j3copoq"]
 
-[ext_resource type="PackedScene" uid="uid://ce58kx7qj2wlm" path="res://Levels/0.tscn" id="1_4q08t"]
+[ext_resource type="PackedScene" path="res://Levels/0.tscn" id="1_4q08t"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
-[ext_resource type="PackedScene" uid="uid://cmrn4q5mx75ox" path="res://Levels/1.tscn" id="3_yc0pl"]
+[ext_resource type="PackedScene" path="res://Levels/1.tscn" id="3_yc0pl"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
 [ext_resource type="PackedScene" uid="uid://b8xj771vqtt8j" path="res://Scenes/ink.tscn" id="5_p4gqa"]
+[ext_resource type="PackedScene" uid="uid://drcx4m24ltvx6" path="res://red_bar.tscn" id="9_y7aia"]
+[ext_resource type="PackedScene" uid="uid://dfcv1xi80pgh2" path="res://black_bar.tscn" id="10_qq48v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
 size = Vector2(128, 129)
@@ -140,6 +142,7 @@ script = ExtResource("1_vxup7")
 position = Vector2(768, 0)
 
 [node name="Navigation" type="Node2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
@@ -148,3 +151,7 @@ offset_top = 1025.0
 offset_right = 653.0
 offset_bottom = 1476.0
 text = "qweqweqwe"
+
+[node name="RedBar" parent="CanvasLayer" instance=ExtResource("9_y7aia")]
+
+[node name="BlackBar" parent="CanvasLayer" instance=ExtResource("10_qq48v")]
