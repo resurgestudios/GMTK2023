@@ -45,9 +45,9 @@ height = 16
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.184466, 0.42233)
 
-[node name="Normal_Enemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 3
-collision_mask = 3
+[node name="Normal_Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("1_qe5o8")
 metadata/_edit_group_ = true
 
@@ -59,11 +59,13 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vhaqk")
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_o1rtk")
 collision_layer = 3
 collision_mask = 3
 script = SubResource("GDScript_reaq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_cqbhl")
 

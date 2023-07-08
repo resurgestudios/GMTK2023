@@ -1,9 +1,16 @@
-[gd_scene load_steps=37 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=21 format=3 uid="uid://3xwx3j3copoq"]
 
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
+[ext_resource type="PackedScene" uid="uid://ccmuytdwmwwqv" path="res://Levels/1.tscn" id="2_ratlv"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_atv8p"]
+[ext_resource type="PackedScene" path="res://Levels/0.tscn" id="1_4q08t"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
+[ext_resource type="PackedScene" uid="uid://dlmsd6wryc2qb" path="res://Scenes/ink.tscn" id="5_p4gqa"]
+[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="PackedScene" uid="uid://culcdkwl1gc41" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
@@ -22,7 +29,7 @@ func _process(_delta):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
-size = Vector2(128, 129)
+size = Vector2(92, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p3lw"]
 atlas = ExtResource("4_g5yrc")
@@ -221,6 +228,8 @@ script = SubResource("GDScript_tbaqp")
 [node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true
 position = Vector2(256, 120)
+scale = Vector2(0.5, 0.5)
+collision_mask = 6
 script = ExtResource("1_fi5u7")
 multiplier = 4000.0
 ink_speed = 2000
@@ -231,10 +240,11 @@ visible = false
 texture = ExtResource("2_aoy67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Printer"]
-position = Vector2(0, -0.5)
+position = Vector2(-5, 41)
 shape = SubResource("RectangleShape2D_0g4l3")
 
 [node name="Camera2D" type="Camera2D" parent="Printer"]
+zoom = Vector2(1.2, 1.2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Printer"]
 scale = Vector2(5, 5)
@@ -250,8 +260,8 @@ scale = Vector2(15, 15)
 texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
+scale = Vector2(3, 3)
 script = ExtResource("1_vxup7")
-
 [node name="Navigation" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -259,6 +269,18 @@ script = ExtResource("1_vxup7")
 [node name="InkBar" type="Node2D" parent="CanvasLayer"]
 position = Vector2(50, 1030)
 script = ExtResource("9_8uwy2")
+
+
+[node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
+map_w = 4
+map_h = 9
+variance = 500.0
+
+[node name="TileMap" parent="MapManager" instance=ExtResource("2_ratlv")]
+layer_0/tile_data = PackedInt32Array()
+
+[node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
+position = Vector2(768, 0)
 
 [node name="AnimatedSprite2D" parent="CanvasLayer/InkBar" instance=ExtResource("9_vg42r")]
 position = Vector2(2.08165e-12, 2.08165e-12)
