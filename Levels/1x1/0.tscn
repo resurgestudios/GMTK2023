@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_bcbh2"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_rddg1"]
-[ext_resource type="PackedScene" uid="uid://dcvld7xtqdd5d" path="res://Enemies/normal_enemy.tscn" id="3_a8odo"]
+[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="3_a8odo"]
 [ext_resource type="Script" path="res://Scripts/Shade.gd" id="4_w71th"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="5_xasyb"]
 
