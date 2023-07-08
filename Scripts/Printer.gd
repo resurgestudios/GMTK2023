@@ -1,21 +1,22 @@
 extends CharacterBody2D
 
-@export var max_time: float = 2
-@export var threshold: float = 0.1
-@export var base_move_time: float = 0.5
-@export var multiplier: float = 1000
 @export var ink_speed: int = 200
 @export var ink_cost: float = 5
-
-
+var max_jump_dist: float = 500
 var frozen: bool = false
-var action_time: float = 0
-var move_time: float = 0
+var move_time: float = 0.0
+var total_move_time: float = 0.5
 var target_velocity: Vector2 = Vector2.ZERO
+var start_position: Vector2 = Vector2.ZERO
+var end_position: Vector2 = Vector2.ZERO
+var target_position: Vector2 = Vector2.ZERO
 var frozen_timer: float = 3.0
 
 func _ready():
-	pass
+	start_position = position
+	end_position = position
+	target_position = position
+	move_time = total_move_time
 
 # t: a value between 0 and 1, the progress of the movement
 # return: a multiplier for the velocity to be multiplied by
@@ -29,22 +30,18 @@ func easing(t: float) -> float:
 	return s*s*a + s*t*b + t*s*b + t*t*c
 
 func _process(delta: float):
-	if move_time == 0 and frozen == false:
-		if Input.is_action_pressed("Jump"):
-			action_time += delta
-		if Input.is_action_just_released("Jump"):
-			if action_time > threshold:
-				$AnimatedSprite2D.play("jump")
-				var direction: Vector2 = (get_global_mouse_position() - position).normalized()
-				action_time = min(action_time, max_time)
-				target_velocity = direction * action_time * multiplier
-				move_time = base_move_time
-			action_time = 0	
-	if move_time < 0:
-		if move_time < 0:
+	if move_time >= total_move_time:
+		$AnimatedSprite2D.stop() # change this to play idle animation
+		if Input.is_action_just_pressed("Jump"):
+			$AnimatedSprite2D.play("jump")
 			target_velocity = Vector2.ZERO
-			move_time = 0
-			$AnimatedSprite2D.stop()
+			start_position = position
+			end_position = get_global_mouse_position()
+			var vec: Vector2 = (end_position - start_position)
+			var magnitude: float = min(max_jump_dist, vec.length())
+			vec = vec.normalized() * magnitude
+			end_position = start_position + vec
+			move_time = 0.0
 	if Input.is_action_just_pressed("Shoot"):
 		shoot_ink()
 		
@@ -75,13 +72,19 @@ func bounce(collision: KinematicCollision2D):
 	target_velocity = dir * length
 
 func _physics_process(delta):
-	var t: float = (base_move_time - move_time) / base_move_time
-	velocity = target_velocity * easing(t)
-	if move_time > 0:
-		move_time -= delta
-	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision != null:
-		bounce(collision)
+	move_time += delta
+	if move_time <= total_move_time:
+		target_position = start_position.lerp(end_position, move_time / total_move_time)
+		var vec: Vector2 = Vector2.ZERO
+		if target_velocity.length() < 1:
+			vec = target_position - position
+			target_velocity = vec / delta
+		else:
+			vec = target_velocity * delta
+#		print(start_position, end_target_position)
+		var collision: KinematicCollision2D = move_and_collide(vec)
+		if collision != null and not collision.get_collider().is_in_group("enemies"):
+			bounce(collision)
 	if frozen == true:
 		frozen_timer -= delta
 	if frozen_timer <= 0.0:

@@ -46,7 +46,7 @@ func _physics_process(delta):
 		timer = Global.rng.randf_range(0.75, 1.25)
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
-		if not collision.get_collider().is_in_group("enemy"):
+		if not collision.get_collider().is_in_group("enemies"):
 			bounce(collision)
 
 func _on_area_2d_body_entered(body):
