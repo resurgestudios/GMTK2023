@@ -134,17 +134,3 @@ texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
 script = ExtResource("1_vxup7")
-<<<<<<< Updated upstream
-
-[node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
-=======
-map_w = 4
-map_h = 9
-variance = 500.0
-
-[node name="TileMap" parent="MapManager" instance=ExtResource("2_ratlv")]
-layer_0/tile_data = PackedInt32Array()
->>>>>>> Stashed changes
-
-[node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
-position = Vector2(768, 0)
