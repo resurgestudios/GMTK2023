@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvld7xtqdd5d"]
+[gd_scene load_steps=8 format=3 uid="uid://bwytb7btfr43o"]
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
@@ -9,6 +9,16 @@ size = Vector2(128, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
+
+[sub_resource type="Gradient" id="Gradient_v0nfe"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mctw8"]
+gradient = SubResource("Gradient_v0nfe")
+width = 128
+height = 16
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.184466, 0.42233)
 
 [node name="Normal_Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_qe5o8")
@@ -31,5 +41,23 @@ shape = SubResource("RectangleShape2D_cqbhl")
 [node name="Angry" type="Sprite2D" parent="."]
 modulate = Color(0.862745, 0.333333, 0.509804, 1)
 texture = ExtResource("1_5jl2r")
+
+[node name="ShieldBar" type="TextureProgressBar" parent="."]
+z_index = 10
+offset_left = -64.0
+offset_top = -84.0
+offset_right = 64.0
+offset_bottom = -68.0
+size_flags_horizontal = 3
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_mctw8")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -64.0
+offset_top = -104.0
+offset_right = 64.0
+offset_bottom = -88.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_mctw8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

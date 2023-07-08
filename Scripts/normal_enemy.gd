@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+var health: float = 100.0
+var regen: float = 2.0
+var shield: float = 0.0
 const speed: int = 100
 var direction: float = Global.rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
@@ -22,6 +25,13 @@ func _ready():
 	$Angry.hide()
 
 var timer: float = 0
+
+func _process(delta):
+	health += regen * delta	
+	health = min(health, 100.0)
+	print(health," ",shield)
+	$Bars/HealthBar.value = health
+	$Bars/ShieldBar.value = shield
 
 func _physics_process(delta):
 	velocity = target_velocity
@@ -45,8 +55,20 @@ func _physics_process(delta):
 func follow():
 	pass
 
+func damage(delta: float):
+	var shield_delta: float = min(delta, shield)
+	shield -= shield_delta
+	delta -= shield_delta
+	health -= delta
+
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("boss"):
 		$Normal.hide()
 		$Angry.show()
 		following = body
+		shield += 50.0
+	if body.is_in_group("paper"):
+		damage(40.0)
+		if health <= 0.0:
+			# TODO play death animation
+			queue_free()
