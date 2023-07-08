@@ -1,10 +1,32 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://b7ud28xflk6bi"]
+=======
+[gd_scene load_steps=10 format=3 uid="uid://b7ud28xflk6bi"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/boss_enemy.gd" id="1_3x64b"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_6uut0"]
+[ext_resource type="Script" path="res://Scripts/Normal_Enemy_Detect.gd" id="3_g1i0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
 size = Vector2(128, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaffd"]
+size = Vector2(151, 153)
+
+[sub_resource type="Gradient" id="Gradient_vipro"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t1re6"]
+gradient = SubResource("Gradient_vipro")
+width = 256
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_yk7v0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b8g8m"]
+gradient = SubResource("Gradient_yk7v0")
+width = 256
+height = 16
 
 [node name="Boss_Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_3x64b")
@@ -19,3 +41,35 @@ texture = ExtResource("2_6uut0")
 position = Vector2(0, 0.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_vhaqk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_g1i0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.875, 1.875)
+shape = SubResource("RectangleShape2D_xaffd")
+
+[node name="ShieldBar" type="TextureProgressBar" parent="."]
+z_index = 10
+offset_left = -128.0
+offset_top = -150.0
+offset_right = 128.0
+offset_bottom = -134.0
+size_flags_horizontal = 3
+max_value = 200.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_t1re6")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -128.0
+offset_top = -170.0
+offset_right = 128.0
+offset_bottom = -154.0
+max_value = 200.0
+value = 116.0
+texture_progress = SubResource("GradientTexture2D_b8g8m")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 
-const speed: int = 50
+var health: float = 200.0
+var regen: float = 20.0
+var shield: float = 200.0
+const speed: float = 50
 var target_velocity: Vector2
 
 func _ready():
@@ -9,11 +12,24 @@ func _ready():
 
 var timer: float = 0
 
+func damage(delta: float):
+	var shield_delta: float = min(delta, shield)
+	shield -= shield_delta
+	delta -= shield_delta
+	health -= delta
+	
+func _process(delta):
+	health += regen * delta	
+	shield += max(0, health - 200.0)
+	health = min(health, 200.0)
+	$HealthBar.value = health
+	$ShieldBar.value = shield
+
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
 	var lengthA: float = max(20, target_velocity.length())
 	var lengthB: float = max(20, collision.get_collider_velocity().length())
-	var length: float = min(speed/2, sqrt(lengthA * lengthB))
+	var length: float = min(speed/2.0, sqrt(lengthA * lengthB))
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
 	target_velocity = dir * length
 
@@ -33,4 +49,21 @@ func _physics_process(delta):
 		if not collision.get_collider().is_in_group("enemy"):
 			bounce(collision)
 
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("printer"):
+		var dmg: float = min(80, health + shield)
+		# TODO play death/attack animation
+		Global.ink.retrieve(dmg / 5.0)
+		damage(dmg)
+		if health <= 0:
+			queue_free()
 
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("paper"):
+		damage(40.0)
+		if health <= 0.0:
+			die()
+
+func die():
+	# TODO play death animation
+			queue_free()

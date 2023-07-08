@@ -7,7 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
 [ext_resource type="PackedScene" uid="uid://cmrn4q5mx75ox" path="res://Levels/1.tscn" id="3_yc0pl"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://b8xj771vqtt8j" path="res://Scenes/ink.tscn" id="5_p4gqa"]
+=======
+[ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
+[ext_resource type="PackedScene" path="res://Scenes/flow.tscn" id="9_vg42r"]
+[ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
 size = Vector2(128, 129)
