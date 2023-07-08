@@ -33,7 +33,8 @@ func _ready() -> void:
 	
 	var to = tos[randi() % tos.size()]
 	
-	for i in TileMap
+#	for i in TileMap:
+#		pass
 	
 	for i in range(($TileMap2.position.x - ($TileMap.position.x + $TileMap.size.x * 32)) / 32.0):
 		#print(2)
