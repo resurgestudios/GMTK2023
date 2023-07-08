@@ -4,7 +4,7 @@ extends CharacterBody2D
 var health: float = 100.0
 var regen: float = 2.0
 var shield: float = 0.0
-const speed: int = 100
+const speed: float = 200
 var direction: float = Global.rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
 var updated: bool = false
@@ -26,7 +26,17 @@ func _ready():
 
 var timer: float = 0
 
+func damage(delta: float):
+	var shield_delta: float = min(delta, shield)
+	shield -= shield_delta
+	delta -= shield_delta
+	health -= delta
+
 func _process(delta):
+	if following == null:
+		$Normal.show()
+		$Angry.hide()
+		shield = 0.0
 	health += regen * delta	
 	health = min(health, 100.0)
 	$HealthBar.value = health
@@ -46,7 +56,7 @@ func _physics_process(delta):
 		else:
 			direction += Global.rng.randf_range(-1.0, 1.0)
 			target_velocity = speed * Vector2(cos(direction), sin(direction))
-		timer = Global.rng.randf_range(1.5, 2.5)
+		timer = Global.rng.randf_range(0.75, 1.25)
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
 		bounce(collision)
@@ -66,6 +76,24 @@ func _on_area_2d_body_entered(body):
 		$Angry.show()
 		following = body
 		shield += 50.0
+		body.damage(50.0)
+	if body.is_in_group("printer"):
+		var dmg: float = min(80, health + shield)
+		# TODO play death/attack animation
+		Global.ink.retrieve(dmg / 5.0)
+		damage(dmg)
+		if health <= 0:
+			queue_free()
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("paper"):
+		damage(40.0)
+		if health <= 0.0:
+			die()
+
+func die():
+	# TODO play death animation
+  pass
 
 
 func _on_area_2d_area_entered(area):
@@ -74,5 +102,4 @@ func _on_area_2d_area_entered(area):
 		damage(40.0)
 		print(health,shield)
 		if health <= 0.0:
-			# TODO play death animation
-			queue_free()
+			die()
