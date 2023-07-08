@@ -1,11 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=37 format=3 uid="uid://3xwx3j3copoq"]
 
-[ext_resource type="PackedScene" path="res://Levels/0.tscn" id="1_4q08t"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
-[ext_resource type="PackedScene" path="res://Levels/1.tscn" id="3_yc0pl"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="PackedScene" uid="uid://culcdkwl1gc41" path="res://Scenes/flow.tscn" id="9_vg42r"]
@@ -241,11 +239,6 @@ texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
 script = ExtResource("1_vxup7")
-
-[node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
-
-[node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
-position = Vector2(768, 0)
 
 [node name="Navigation" type="Node2D" parent="."]
 
