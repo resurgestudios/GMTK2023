@@ -66,4 +66,8 @@ func _on_area_2d_area_entered(area):
 
 func die():
 	# TODO play death animation
+	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
+	blood_inst.position = global_position
+	blood_inst.volume = 100.0
+	get_tree().root.call_deferred("add_child", blood_inst)
 	queue_free()

@@ -248,6 +248,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Printer"]
 visible = false
+z_index = 2
 texture = ExtResource("2_aoy67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Printer"]
