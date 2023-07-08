@@ -18,9 +18,6 @@ var timer: float = ink_draw_interval
 
 func _process(delta):
 	if not spawned:
-		# spawn_normal_enemies()
-		# spawn_boss_enemies()
-		# spawn_coffee_enemies()
 		init_navigation()
 		spawned = true
 	if ink != null:

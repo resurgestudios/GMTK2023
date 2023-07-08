@@ -37,12 +37,12 @@ func _physics_process(delta):
 	timer -= delta
 	velocity = target_velocity
 	if timer <= 0:
-		var cur: Vector2i = Global.closest_point(position)
-		var end: Vector2i = Global.closest_point(get_node("/root/Main/Printer").position)
+		var cur: Vector2i = Global.closest_point(global_position)
+		var end: Vector2i = Global.closest_point(get_node("/root/Main/Printer").global_position)
 		var path: PackedVector2Array = Global.map.get_point_path(cur, end)
 		if len(path) > 1:
 			var next: Vector2 = path[1]
-			target_velocity = (next - position).normalized() * speed
+			target_velocity = (next - global_position).normalized() * speed
 		timer = Global.rng.randf_range(0.75, 1.25)
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
