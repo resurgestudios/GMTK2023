@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfcv1xi80pgh2"]
+
+[ext_resource type="Texture2D" uid="uid://7eh52sytpr0a" path="res://Art/ BlackSquare.png" id="1_xknas"]
+
+[node name="BlackBar" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, -50)
+texture = ExtResource("1_xknas")
