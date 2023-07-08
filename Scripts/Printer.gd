@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var ink_speed: int = 200
+@export var ink_speed: float = 500
 @export var ink_cost: float = 5
 var max_jump_dist: float = 500
 var frozen: bool = false

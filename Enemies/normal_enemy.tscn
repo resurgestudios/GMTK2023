@@ -47,7 +47,7 @@ fill_to = Vector2(0.184466, 0.42233)
 
 [node name="Normal_Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
-collision_mask = 12
+collision_mask = 13
 script = ExtResource("1_qe5o8")
 metadata/_edit_group_ = true
 
