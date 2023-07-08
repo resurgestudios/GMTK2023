@@ -56,7 +56,7 @@ func _on_area_2d_body_entered(body):
 		Global.ink.retrieve(dmg / 5.0)
 		damage(dmg)
 		if health <= 0:
-			queue_free()
+			die()
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("paper"):
@@ -66,4 +66,4 @@ func _on_area_2d_area_entered(area):
 
 func die():
 	# TODO play death animation
-			queue_free()
+	queue_free()
