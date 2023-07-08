@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
 
-var health: float = 200.0
-var regen: float = 20.0
-var shield: float = 200.0
+var rng = RandomNumberGenerator.new()
 const speed: float = 50
 var target_velocity: Vector2
 
@@ -12,28 +10,18 @@ func _ready():
 
 var timer: float = 0
 
-func damage(delta: float):
-	var shield_delta: float = min(delta, shield)
-	shield -= shield_delta
-	delta -= shield_delta
-	health -= delta
-	
-func _process(delta):
-	health += regen * delta	
-	shield += max(0, health - 200.0)
-	health = min(health, 200.0)
-	$HealthBar.value = health
-	$ShieldBar.value = shield
-
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
 	var lengthA: float = max(20, target_velocity.length())
 	var lengthB: float = max(20, collision.get_collider_velocity().length())
-	var length: float = min(speed/2.0, sqrt(lengthA * lengthB))
+	var length: float = min(speed/2, sqrt(lengthA * lengthB))
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
 	target_velocity = dir * length
 
+var coffee_timer: float = rng.randf_range(3.0, 7.0)
+
 func _physics_process(delta):
+	coffee_timer -= delta
 	timer -= delta
 	velocity = target_velocity
 	if timer <= 0:
@@ -48,22 +36,21 @@ func _physics_process(delta):
 	if collision != null:
 		if not collision.get_collider().is_in_group("enemy"):
 			bounce(collision)
+	if coffee_timer <= 0:
+		coffee_timer = rng.randf_range(3.0, 7.0)
+		shoot_coffee()
+		var normal_enemy_inst = load("res://Enemies/normal_enemy.tscn").instantiate()
+		normal_enemy_inst.position = position
+		normal_enemy_inst.add_to_group("normal")
+		get_tree().root.add_child(normal_enemy_inst)
+		queue_free()
+		
+		
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("printer"):
-		var dmg: float = min(80, health + shield)
-		# TODO play death/attack animation
-		Global.ink.retrieve(dmg / 5.0)
-		damage(dmg)
-		if health <= 0:
-			die()
+func shoot_coffee():
+	var  coffee_inst = load("res://Scenes/coffee.tscn").instantiate()
+	get_tree().root.add_child(coffee_inst)
+	coffee_inst.position = position
+	
+	
 
-func _on_area_2d_area_entered(area):
-	if area.is_in_group("paper"):
-		damage(40.0)
-		if health <= 0.0:
-			die()
-
-func die():
-	# TODO play death animation
-	queue_free()

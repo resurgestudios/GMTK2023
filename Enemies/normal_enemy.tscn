@@ -1,14 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvld7xtqdd5d"]
+[gd_scene load_steps=10 format=3 uid="uid://bwytb7btfr43o"]
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
-[ext_resource type="Script" path="res://Enemies/Normal_Enemy_Detect.gd" id="3_o1rtk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
 size = Vector2(128, 129)
 
+[sub_resource type="GDScript" id="GDScript_reaq6"]
+script/source = "extends Area2D
+
+
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+#	self.body_entered.connect(collide)
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+#
+#func collide(body):
+#	if body.is_in_group(\"boss\"):
+#		print(\"hit\")
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
+
+[sub_resource type="Gradient" id="Gradient_gt8c6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jd5pj"]
+gradient = SubResource("Gradient_gt8c6")
+width = 128
+height = 16
+fill_from = Vector2(0.179487, 0.393162)
+
+[sub_resource type="Gradient" id="Gradient_v0nfe"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mctw8"]
+gradient = SubResource("Gradient_v0nfe")
+width = 128
+height = 16
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.184466, 0.42233)
 
 [node name="Normal_Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -16,8 +51,7 @@ collision_mask = 12
 script = ExtResource("1_qe5o8")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.866667, 0.333333, 0.513726, 1)
+[node name="Normal" type="Sprite2D" parent="."]
 texture = ExtResource("1_5jl2r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,13 +59,37 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vhaqk")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("3_o1rtk")
+collision_layer = 3
+collision_mask = 3
+script = SubResource("GDScript_reaq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_cqbhl")
 
+[node name="Angry" type="Sprite2D" parent="."]
+modulate = Color(0.862745, 0.333333, 0.509804, 1)
+texture = ExtResource("1_5jl2r")
+
+[node name="ShieldBar" type="TextureProgressBar" parent="."]
+z_index = 10
+offset_left = -64.0
+offset_top = -84.0
+offset_right = 64.0
+offset_bottom = -68.0
+size_flags_horizontal = 3
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_jd5pj")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -64.0
+offset_top = -104.0
+offset_right = 64.0
+offset_bottom = -88.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_mctw8")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

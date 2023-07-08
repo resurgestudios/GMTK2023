@@ -1,12 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://3xwx3j3copoq"]
 
-<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="PackedScene" uid="uid://ccmuytdwmwwqv" path="res://Levels/1.tscn" id="2_ratlv"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_atv8p"]
 [ext_resource type="PackedScene" path="res://Levels/0.tscn" id="1_4q08t"]
-=======
->>>>>>> Stashed changes
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
@@ -14,6 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
 [ext_resource type="PackedScene" uid="uid://dlmsd6wryc2qb" path="res://Scenes/ink.tscn" id="5_p4gqa"]
 [ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
+[ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
+[ext_resource type="PackedScene" uid="uid://culcdkwl1gc41" path="res://Scenes/flow.tscn" id="9_vg42r"]
+[ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
+
+[sub_resource type="GDScript" id="GDScript_tbaqp"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
 size = Vector2(92, 76)
@@ -103,17 +116,123 @@ animations = [{
 "speed": 23.0
 }]
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_36f4q")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bukeu"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 0, 80, 12)
 
-[node name="Printer" type="CharacterBody2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uook"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 0, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2dqr"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 13, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq0gx"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 13, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eqoj"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 26, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7r8s"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 26, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h40x4"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 39, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e5ph"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 39, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o24pr"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 52, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hhg8"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 52, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8pba"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 65, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e6j7"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 65, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3t7j"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(0, 78, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw7m0"]
+atlas = ExtResource("11_uid8i")
+region = Rect2(80, 78, 80, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5233t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bukeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uook")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2dqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq0gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eqoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7r8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h40x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e5ph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o24pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hhg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8pba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e6j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3t7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw7m0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_tbaqp")
+
+[node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true
 position = Vector2(256, 120)
 scale = Vector2(0.5, 0.5)
 collision_mask = 6
 script = ExtResource("1_fi5u7")
 multiplier = 4000.0
-ink_speed = 800
+ink_speed = 2000
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Printer"]
@@ -133,29 +252,23 @@ sprite_frames = SubResource("SpriteFrames_26nms")
 animation = &"jump"
 
 [node name="Background" type="Node2D" parent="."]
+visible = false
 z_index = -19
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 scale = Vector2(15, 15)
 texture = ExtResource("2_aoy67")
 
-[node name="Ink" parent="." instance=ExtResource("5_p4gqa")]
-
 [node name="MapManager" type="Node2D" parent="."]
 scale = Vector2(3, 3)
 script = ExtResource("1_vxup7")
-<<<<<<< Updated upstream
+[node name="Navigation" type="Node2D" parent="."]
 
-map_w = 9
-map_h = 9
-variance = 800.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TileMap" parent="MapManager" instance=ExtResource("2_ratlv")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1152, 652)
-zoom = Vector2(0.5, 0.5)
-script = ExtResource("3_atv8p")
+[node name="InkBar" type="Node2D" parent="CanvasLayer"]
+position = Vector2(50, 1030)
+script = ExtResource("9_8uwy2")
 
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
@@ -168,11 +281,8 @@ layer_0/tile_data = PackedInt32Array()
 
 [node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
 position = Vector2(768, 0)
-=======
-map_w = 10
-map_h = 10
-variance = 1.0
 
-[node name="TileMap" parent="MapManager" instance=ExtResource("7_hbgmt")]
-visible = false
->>>>>>> Stashed changes
+[node name="AnimatedSprite2D" parent="CanvasLayer/InkBar" instance=ExtResource("9_vg42r")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+sprite_frames = SubResource("SpriteFrames_5233t")
+frame_progress = 0.471209

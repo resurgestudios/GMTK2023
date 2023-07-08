@@ -2,14 +2,17 @@ extends CharacterBody2D
 
 @export var max_time: float = 2
 @export var threshold: float = 0.1
-@export var bounce: bool = true
 @export var base_move_time: float = 0.5
 @export var multiplier: float = 1000
 @export var ink_speed: int = 200
+@export var ink_cost: float = 5
 
+
+var frozen: bool = false
 var action_time: float = 0
 var move_time: float = 0
 var target_velocity: Vector2 = Vector2.ZERO
+var frozen_timer: float = 3.0
 
 func _ready():
 	pass
@@ -17,8 +20,8 @@ func _ready():
 # t: a value between 0 and 1, the progress of the movement
 # return: a multiplier for the velocity to be multiplied by
 # https://www.desmos.com/calculator/z4vglvnbqo to find a,b,c
-var a: float = 0.5
-var b: float = 1.5
+var a: float = 1.0
+var b: float = 1.0
 var c: float = 0.5
 func easing(t: float) -> float:
 	var s: float = 1 - t
@@ -26,7 +29,7 @@ func easing(t: float) -> float:
 	return s*s*a + s*t*b + t*s*b + t*t*c
 
 func _process(delta: float):
-	if move_time == 0:
+	if move_time == 0 and frozen == false:
 		if Input.is_action_pressed("Jump"):
 			action_time += delta
 		if Input.is_action_just_released("Jump"):
@@ -46,21 +49,29 @@ func _process(delta: float):
 		shoot_ink()
 		
 func shoot_ink():
-	var ink_inst = load("res://Scenes/ink.tscn").instantiate()
-	get_tree().root.add_child(ink_inst)
-	var angle = position.angle_to_point(get_global_mouse_position())
-	ink_inst.velocity.y = ink_speed * sin(angle)
-	ink_inst.velocity.x = ink_speed * cos(angle)
-	ink_inst.position = position
-	ink_inst.rotation = angle
+	if Global.ink.total_volume() >= ink_cost and frozen == false:
+		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
+		get_tree().root.add_child(ink_inst)
+		var angle = position.angle_to_point(get_global_mouse_position())
+		ink_inst.velocity.y = ink_speed * sin(angle)
+		ink_inst.velocity.x = ink_speed * cos(angle)
+		ink_inst.position = position
+		ink_inst.rotation = angle
+		if Global.ink.queue[0].is_ink:
+			ink_inst.get_node("Black").show()
+			ink_inst.get_node("Red").hide()
+		else:
+			ink_inst.get_node("Red").show()
+			ink_inst.get_node("Black").hide()
+		Global.ink.retrieve(ink_cost)
 		
 		
-func bounce_with_clamp(min_length: float, max_length: float):
-	var collision: KinematicCollision2D = get_last_slide_collision()
+func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
-	var length: float = target_velocity.length()
+	var lengthA: float = max(200, target_velocity.length())
+	var lengthB: float = max(200, collision.get_collider_velocity().length())
+	var length: float = sqrt(lengthA * lengthB)
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
-	length = clamp(length, min_length, max_length)
 	target_velocity = dir * length
 
 func _physics_process(delta):
@@ -68,8 +79,17 @@ func _physics_process(delta):
 	velocity = target_velocity * easing(t)
 	if move_time > 0:
 		move_time -= delta
-	if move_and_slide() and bounce:
-		bounce_with_clamp(200, 2000)
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	if collision != null:
+		bounce(collision)
+	if frozen == true:
+		frozen_timer -= delta
+	if frozen_timer <= 0.0:
+		frozen = false
 
-
+func touch_coffee():
+	Global.ink.retrieve(100)
+	frozen = true
+	frozen_timer = 3.0
+	
 	

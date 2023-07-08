@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://culcdkwl1gc41"]
+
+[ext_resource type="Texture2D" uid="uid://p60sgb24qi5j" path="res://Art/BloodSpreadsheet.png" id="1_u1l33"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhfck"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 0, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bak8m"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 48, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o36q7"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 84, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox00m"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 96, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haouh"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 108, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eh0u"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 132, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f0q7"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 144, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldhcr"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 156, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7stgl"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 12, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcakl"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 36, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ysys"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 24, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4pn5"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 60, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycb5a"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 72, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj41h"]
+atlas = ExtResource("1_u1l33")
+region = Rect2(0, 120, 80, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gjrt3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhfck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bak8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o36q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox00m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haouh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eh0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f0q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldhcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7stgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcakl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ysys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4pn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycb5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj41h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["flow"]]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2.08165e-12, 16)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_gjrt3")
