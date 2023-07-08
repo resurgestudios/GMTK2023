@@ -1,6 +1,5 @@
 [gd_scene load_steps=37 format=3 uid="uid://3xwx3j3copoq"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
@@ -8,6 +7,19 @@
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="PackedScene" uid="uid://culcdkwl1gc41" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
+
+[sub_resource type="GDScript" id="GDScript_tbaqp"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
 size = Vector2(128, 129)
@@ -204,7 +216,7 @@ animations = [{
 }]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_36f4q")
+script = SubResource("GDScript_tbaqp")
 
 [node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true

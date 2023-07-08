@@ -2,10 +2,27 @@
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
-[ext_resource type="Script" path="res://Scripts/Normal_Enemy_Detect.gd" id="3_6d4cw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
 size = Vector2(128, 129)
+
+[sub_resource type="GDScript" id="GDScript_reaq6"]
+script/source = "extends Area2D
+
+
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+#	self.body_entered.connect(collide)
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+#
+#func collide(body):
+#	if body.is_in_group(\"boss\"):
+#		print(\"hit\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
@@ -44,7 +61,7 @@ shape = SubResource("RectangleShape2D_vhaqk")
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("3_6d4cw")
+script = SubResource("GDScript_reaq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0.5)

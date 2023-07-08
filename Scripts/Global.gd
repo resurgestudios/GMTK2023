@@ -22,7 +22,6 @@ func _process(delta):
 		spawn_boss_enemies()
 		spawn_coffee_enemies()
 		init_navigation()
-		spawn_hacker_enemies()
 		spawned = true
 	if ink != null:
 		timer -= delta
