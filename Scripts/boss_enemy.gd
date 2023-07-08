@@ -2,31 +2,35 @@ extends CharacterBody2D
 
 
 const speed: int = 50
-var rng = RandomNumberGenerator.new()
-var direction: float = rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
-
-func bounce_with_clamp(min_length: float, max_length: float):
-	var collision: KinematicCollision2D = get_last_slide_collision()
-	var norm: Vector2 = collision.get_normal()
-	var length: float = target_velocity.length()
-	var dir: Vector2 = target_velocity.bounce(norm).normalized()
-	length = clamp(length, min_length, max_length)
-	target_velocity = dir * length
 
 func _ready():
 	pass
 
 var timer: float = 0
 
+func bounce(collision: KinematicCollision2D):
+	var norm: Vector2 = collision.get_normal()
+	var lengthA: float = max(20, target_velocity.length())
+	var lengthB: float = max(20, collision.get_collider_velocity().length())
+	var length: float = min(speed/2, sqrt(lengthA * lengthB))
+	var dir: Vector2 = target_velocity.bounce(norm).normalized()
+	target_velocity = dir * length
+
 func _physics_process(delta):
-	velocity = target_velocity
 	timer -= delta
+	velocity = target_velocity
 	if timer <= 0:
-		direction += rng.randf_range(-1.0, 1.0)
-		timer = rng.randf_range(1.5, 3.0)
-		target_velocity = speed * Vector2(cos(direction), sin(direction))
-	if move_and_slide():
-		bounce_with_clamp(200, 2000)
+		var cur: Vector2i = Global.closest_point(position)
+		var end: Vector2i = Global.closest_point(get_node("/root/Main/Printer").position)
+		var path: PackedVector2Array = Global.map.get_point_path(cur, end)
+		if len(path) > 1:
+			var next: Vector2 = path[1]
+			target_velocity = (next - position).normalized() * speed
+		timer = Global.rng.randf_range(0.75, 1.25)
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+	if collision != null:
+		if not collision.get_collider().is_in_group("enemy"):
+			bounce(collision)
 
 
