@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cxv0ufrm8g1f8"]
+
+[ext_resource type="Texture2D" uid="uid://f4ajv08maw7h" path="res://Art/New Piskel.png" id="1_i0gf0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0ybn"]
+texture = ExtResource("1_i0gf0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_p0ybn")

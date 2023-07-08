@@ -1,5 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://3xwx3j3copoq"]
 
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
+[ext_resource type="PackedScene" uid="uid://ccmuytdwmwwqv" path="res://Levels/1.tscn" id="2_ratlv"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_atv8p"]
 [ext_resource type="PackedScene" path="res://Levels/0.tscn" id="1_4q08t"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
@@ -134,17 +137,26 @@ texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
 script = ExtResource("1_vxup7")
-<<<<<<< Updated upstream
+
+map_w = 9
+map_h = 9
+variance = 800.0
+
+[node name="TileMap" parent="MapManager" instance=ExtResource("2_ratlv")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1152, 652)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_atv8p")
+
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("1_4q08t")]
-=======
 map_w = 4
 map_h = 9
 variance = 500.0
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("2_ratlv")]
 layer_0/tile_data = PackedInt32Array()
->>>>>>> Stashed changes
 
 [node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
 position = Vector2(768, 0)
