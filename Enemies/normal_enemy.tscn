@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvld7xtqdd5d"]
+[gd_scene load_steps=6 format=3 uid="uid://bwytb7btfr43o"]
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
@@ -10,12 +10,11 @@ size = Vector2(128, 129)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
 size = Vector2(151, 153)
 
-[node name="Normal_Enemy" type="CharacterBody2D"]
+[node name="Normal_Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_qe5o8")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.866667, 0.333333, 0.513726, 1)
+[node name="Normal" type="Sprite2D" parent="."]
 texture = ExtResource("1_5jl2r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -28,5 +27,9 @@ script = ExtResource("3_6d4cw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_cqbhl")
+
+[node name="Angry" type="Sprite2D" parent="."]
+modulate = Color(0.862745, 0.333333, 0.509804, 1)
+texture = ExtResource("1_5jl2r")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=22 format=3 uid="uid://3xwx3j3copoq"]
 
-[ext_resource type="PackedScene" path="res://Levels/0.tscn" id="1_4q08t"]
+[ext_resource type="PackedScene" uid="uid://ce58kx7qj2wlm" path="res://Levels/0.tscn" id="1_4q08t"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
-[ext_resource type="PackedScene" path="res://Levels/1.tscn" id="3_yc0pl"]
+[ext_resource type="PackedScene" uid="uid://cmrn4q5mx75ox" path="res://Levels/1.tscn" id="3_yc0pl"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
 [ext_resource type="PackedScene" uid="uid://b8xj771vqtt8j" path="res://Scenes/ink.tscn" id="5_p4gqa"]
 
@@ -100,12 +100,11 @@ animations = [{
 [node name="Main" type="Node2D"]
 script = ExtResource("1_36f4q")
 
-[node name="Printer" type="CharacterBody2D" parent="."]
+[node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true
 position = Vector2(256, 120)
 script = ExtResource("1_fi5u7")
 multiplier = 4000.0
-ink_speed = 800
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Printer"]
@@ -140,6 +139,7 @@ script = ExtResource("1_vxup7")
 [node name="TileMap2" parent="MapManager" instance=ExtResource("3_yc0pl")]
 position = Vector2(768, 0)
 
+[node name="Navigation" type="Node2D" parent="."]
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
