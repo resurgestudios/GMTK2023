@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 var rng = RandomNumberGenerator.new()
-const speed: int = 50
+const speed: float = 50
 var target_velocity: Vector2
 
 func _ready():
@@ -48,7 +48,7 @@ func _physics_process(delta):
 		
 
 func shoot_coffee():
-	var coffee_inst = load("res://Scenes/coffee.tscn").instantiate()
+	var  coffee_inst = load("res://Scenes/coffee.tscn").instantiate()
 	get_tree().root.add_child(coffee_inst)
 	coffee_inst.position = position
 	

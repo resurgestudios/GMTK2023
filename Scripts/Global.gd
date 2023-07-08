@@ -20,6 +20,7 @@ func _process(delta):
 	if not spawned:
 		spawn_normal_enemies()
 		spawn_boss_enemies()
+		spawn_coffee_enemies()
 		init_navigation()
 		spawn_hacker_enemies()
 		spawned = true
@@ -61,6 +62,15 @@ func spawn_hacker_enemies():
 		hacker_enemy_inst.add_to_group("hacker")
 		hacker_enemy_inst.position = Vector2(x, y)
 		get_tree().root.add_child(hacker_enemy_inst)
+		
+func spawn_coffee_enemies():
+	for i in range(0, 2):
+		var coffee_enemy_inst = load("res://Enemies/coffee_enemy.tscn").instantiate()
+		var x: int = round(rng.randf_range(0.0, 1920.0))
+		var y: int = round(rng.randf_range(0.0, 1080.0))
+		coffee_enemy_inst.add_to_group("coffee")
+		coffee_enemy_inst.position = Vector2(x, y)
+		get_tree().root.add_child(coffee_enemy_inst)
 		
 func die():
 	print("u died lol")

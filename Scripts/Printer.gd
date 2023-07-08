@@ -7,9 +7,12 @@ extends CharacterBody2D
 @export var ink_speed: int = 200
 @export var ink_cost: float = 5
 
+
+var frozen: bool = false
 var action_time: float = 0
 var move_time: float = 0
 var target_velocity: Vector2 = Vector2.ZERO
+var frozen_timer: float = 3.0
 
 func _ready():
 	pass
@@ -26,7 +29,7 @@ func easing(t: float) -> float:
 	return s*s*a + s*t*b + t*s*b + t*t*c
 
 func _process(delta: float):
-	if move_time == 0:
+	if move_time == 0 and frozen == false:
 		if Input.is_action_pressed("Jump"):
 			action_time += delta
 		if Input.is_action_just_released("Jump"):
@@ -46,7 +49,7 @@ func _process(delta: float):
 		shoot_ink()
 		
 func shoot_ink():
-	if Global.ink.total_volume >= ink_cost:
+	if Global.ink.total_volume() >= ink_cost and frozen == false:
 		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
 		get_tree().root.add_child(ink_inst)
 		var angle = position.angle_to_point(get_global_mouse_position())
@@ -79,6 +82,14 @@ func _physics_process(delta):
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
 		bounce(collision)
+	if frozen == true:
+		frozen_timer -= delta
+	if frozen_timer <= 0.0:
+		frozen = false
 
-
+func touch_coffee():
+	Global.ink.retrieve(100)
+	frozen = true
+	frozen_timer = 3.0
+	
 	

@@ -7,28 +7,31 @@ var queue = [
 	{"is_ink": false, "volume": 75.0}
 ]
 
-var total_volume: int = 425
-var capacity: int = 1000
+var capacity: float = 1000
+
+func total_volume() -> float:
+	var curr_total_volume: float = 0
+	for x in queue:
+		curr_total_volume += x.volume
+	return curr_total_volume
 
 # return the actual amount of ink put in the tank
 func add(is_ink: bool, delta_volume: float) -> float:
 	var N: int = len(queue)
-	delta_volume = min(delta_volume, capacity - total_volume)
+	delta_volume = min(delta_volume, capacity - total_volume())
 	if N > 0 and queue[N-1].is_ink == is_ink:
 		queue[N-1].volume += delta_volume
 	else:
 		queue.push_back({"is_ink": is_ink, "volume": delta_volume})
-	total_volume += delta_volume
 	return delta_volume
 
 # returns the actual amount of ink retrieved from the tank
 func retrieve(delta_volume: float) -> float:
-	delta_volume = min(delta_volume, total_volume)
+	delta_volume = min(delta_volume, total_volume())
 	if delta_volume > 0:
 		var delta_delta_volume: float = min(delta_volume, queue[0].volume)
 		delta_volume -= delta_delta_volume
 		queue[0].volume -= delta_delta_volume
-		total_volume -= delta_delta_volume
 		if is_equal_approx(queue[0].volume, 0.0):
 			queue.pop_front()
 		return delta_delta_volume + retrieve(delta_volume)
@@ -56,7 +59,7 @@ func redraw():
 	flow.position.y = -offsetY - 7
 	flow.play("default")
 	
-	if total_volume <= 0.0:
+	if total_volume() <= 0.0:
 		flow.queue_free()
 	else:
 		if queue.back().is_ink:

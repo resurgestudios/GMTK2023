@@ -13,7 +13,7 @@ func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
 	var lengthA: float = max(20, target_velocity.length())
 	var lengthB: float = max(20, collision.get_collider_velocity().length())
-	var length: float = min(speed/2, sqrt(lengthA * lengthB))
+	var length: float = min(speed/2.0, sqrt(lengthA * lengthB))
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
 	target_velocity = dir * length
 
