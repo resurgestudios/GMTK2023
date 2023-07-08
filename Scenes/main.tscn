@@ -1,29 +1,48 @@
-[gd_scene load_steps=38 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=40 format=3 uid="uid://3xwx3j3copoq"]
 
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
+[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
-[ext_resource type="PackedScene" uid="uid://b4m2v1tm2gun6" path="res://Scenes/flow.tscn" id="9_vg42r"]
+[ext_resource type="PackedScene" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
-
-[sub_resource type="GDScript" id="GDScript_tbaqp"]
-script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
 size = Vector2(92, 76)
+
+[sub_resource type="Animation" id="Animation_oixsq"]
+resource_name = "zoom_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.00408552, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:zoom:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.00306414, 0.49639)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cag3r"]
+_data = {
+"zoom_in": SubResource("Animation_oixsq")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p3lw"]
 atlas = ExtResource("4_g5yrc")
@@ -217,7 +236,7 @@ animations = [{
 }]
 
 [node name="Main" type="Node2D"]
-script = SubResource("GDScript_tbaqp")
+script = ExtResource("1_36f4q")
 
 [node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true
@@ -238,6 +257,11 @@ shape = SubResource("RectangleShape2D_0g4l3")
 
 [node name="Camera2D" type="Camera2D" parent="Printer"]
 zoom = Vector2(1.2, 1.2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Printer/Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_cag3r")
+}
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Printer"]
 scale = Vector2(5, 5)

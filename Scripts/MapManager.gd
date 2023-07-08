@@ -220,7 +220,6 @@ func create_section(x, y):
 		$TileMap.set_cell(0, Vector2i(pos[0] * section_w + i.x, pos[1] * section_h + i.y), 0, a_coords)
 		#inst.set_cell(0, Vector2i(i.x, pos[1] * i.y), 0, a_coords)
 		
-	
 	#inst.queue_free()
 	
 

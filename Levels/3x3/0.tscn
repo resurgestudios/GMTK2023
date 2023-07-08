@@ -1,7 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://o6clvw2l0k0t"]
+[gd_scene load_steps=8 format=3 uid="uid://o6clvw2l0k0t"]
 
 [ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_efm2n"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_qskrj"]
+[ext_resource type="Script" path="res://Scripts/Shade.gd" id="3_8bt3k"]
+[ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="4_x55jo"]
+
+[sub_resource type="Animation" id="Animation_lqnrp"]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0, -0.974825, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrlbn"]
+_data = {
+"Fade": SubResource("Animation_lqnrp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lao1g"]
+size = Vector2(512, 512)
 
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource("1_efm2n")
@@ -12,3 +37,28 @@ script = ExtResource("2_qskrj")
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Doors" type="Node2D" parent="."]
+
+[node name="Shade" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(-35.2, -31.68)
+scale = Vector2(3.2, 3.18)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(16, 14.9937, 176, 14.9937, 176, 176, 16, 176)
+script = ExtResource("3_8bt3k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shade"]
+libraries = {
+"": SubResource("AnimationLibrary_jrlbn")
+}
+
+[node name="PlayerArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+script = ExtResource("4_x55jo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(272, 272)
+shape = SubResource("RectangleShape2D_lao1g")
+
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
+[connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]

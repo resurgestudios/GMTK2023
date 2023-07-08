@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8xj771vqtt8j"]
+[gd_scene load_steps=5 format=3 uid="uid://dlmsd6wryc2qb"]
 
 [ext_resource type="Script" path="res://Scripts/ink.gd" id="1_agwgp"]
 [ext_resource type="Texture2D" uid="uid://byyslygeauuuo" path="res://Art/RedSquare.png" id="2_2s1sv"]

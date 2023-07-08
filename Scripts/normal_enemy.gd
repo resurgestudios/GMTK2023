@@ -9,6 +9,10 @@ var direction: float = Global.rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
 var updated: bool = false
 var following: Node2D = null
+var active : bool = false
+
+func activate():
+	active = true
 
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
@@ -43,6 +47,8 @@ func _process(delta):
 	$ShieldBar.value = shield
 
 func _physics_process(delta):
+	if not active:
+		return
 	velocity = target_velocity
 	timer -= delta
 	if timer <= 0:
