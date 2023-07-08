@@ -5,6 +5,7 @@ const speed: int = 100
 var rng = RandomNumberGenerator.new()
 var direction: float = rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
+var following: bool = false
 
 func bounce_with_clamp(min_length: float, max_length: float):
 	var collision: KinematicCollision2D = get_last_slide_collision()
@@ -29,3 +30,13 @@ func _physics_process(delta):
 	if move_and_slide():
 		bounce_with_clamp(200, 2000)
 
+func follow():
+	print("lol")
+
+
+
+
+
+func _on_area_2d_body_entered(area):
+	if area.is_in_group("boss"):
+		print("yea boti")
