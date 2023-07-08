@@ -188,7 +188,7 @@ func create_section(x, y):
 	var inst = load(str).instantiate()
 	for i in inst.get_used_cells(0):
 		var coords = inst.get_cell_atlas_coords(0, Vector2i(i.x, i.y))
-		$TileMap.set_cell(0, Vector2i(pos[0] * 12 +i.x, pos[1] * 12+i.y), 0, coords)
+		$TileMap.set_cell(0, Vector2i(pos[0] * section_w+i.x, pos[1] * section_h+i.y), 0, coords)
 		
 	
 	inst.queue_free()
