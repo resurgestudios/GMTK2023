@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var base_move_time: float = 0.5
 @export var multiplier: float = 1000
 @export var ink_speed: int = 200
-@export var ink_cost: float = 0.05
+@export var ink_cost: float = 5
 
 var action_time: float = 0
 var move_time: float = 0
@@ -46,7 +46,7 @@ func _process(delta: float):
 		shoot_ink()
 		
 func shoot_ink():
-	if Global.ink >= 0.1:
+	if Global.ink.total_volume >= ink_cost:
 		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
 		get_tree().root.add_child(ink_inst)
 		var angle = position.angle_to_point(get_global_mouse_position())
@@ -54,7 +54,13 @@ func shoot_ink():
 		ink_inst.velocity.x = ink_speed * cos(angle)
 		ink_inst.position = position
 		ink_inst.rotation = angle
-		Global.ink -= ink_cost
+		if Global.ink.queue[0].is_ink:
+			ink_inst.get_node("Black").show()
+			ink_inst.get_node("Red").hide()
+		else:
+			ink_inst.get_node("Red").show()
+			ink_inst.get_node("Black").hide()
+		Global.ink.retrieve(ink_cost)
 		
 		
 func bounce(collision: KinematicCollision2D):
