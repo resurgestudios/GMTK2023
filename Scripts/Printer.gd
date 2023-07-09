@@ -77,7 +77,7 @@ func splash_ink():
 		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
 		ink_inst.position = position
 		get_tree().root.add_child(ink_inst)
-		ink_inst.emitting = true
+		ink_inst.get_node("Emitter").emitting = true
 		
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
