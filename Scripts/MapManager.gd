@@ -261,6 +261,11 @@ func create_section(x, y):
 func next_stage():
 	Global.map_w += 1
 	Global.map_h += 1
+	Global.save_bgm()
+	for child in get_node("/root/Main/Splashes").get_children():
+		if child.is_in_group("blood"):
+			Global.ink.add(false, child.volume)
+	Global.save_ink()
 	get_tree().reload_current_scene()
 
 

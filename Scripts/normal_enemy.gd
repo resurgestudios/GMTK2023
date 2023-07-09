@@ -18,9 +18,9 @@ func activate():
 
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
-	var lengthA: float = max(70, target_velocity.length())
-	var lengthB: float = max(70, collision.get_collider_velocity().length())
-	var length: float = sqrt(lengthA * lengthB)
+	var lengthA: float = max(50, target_velocity.length())
+	var lengthB: float = max(50, collision.get_collider_velocity().length())
+	var length: float = min(180, sqrt(lengthA * lengthB))
 	if not collision.get_collider().is_in_group("printer"):
 		length = min(length, speed)
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
@@ -91,7 +91,7 @@ func follow():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("printer"):
-		var dmg: float = min(80, health + shield)
+		var dmg: float = min(30, health + shield)
 		# TODO play death/attack animation
 		Global.ink.retrieve(dmg / 5.0)
 		damage(dmg)

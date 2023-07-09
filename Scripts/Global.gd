@@ -9,6 +9,8 @@ var map_w : int = 1
 var map_h : int = 1
 var dead: bool = false
 
+var ink_queue_save = null
+var bgm_pos: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +39,11 @@ func _process(delta):
 		init_navigation()
 		spawned = true
 	if ink != null:
+		if ink_queue_save != null:
+			print("loaded queue")
+			ink.queue = ink_queue_save
+			ink_queue_save = null
+			ink.add(true, 333.333333 / 2) # divide by two because yes
 		timer -= delta
 		if timer <= 0.0:
 			timer = ink_draw_interval
@@ -44,9 +51,12 @@ func _process(delta):
 				die()
 			else:
 				ink.redraw()
-			
 	
+func save_ink():
+	ink_queue_save = ink.queue
 	
+func save_bgm():
+	bgm_pos = get_node("/root/Main/MainTheme").get_playback_position()
 
 func spawn_normal_enemies():
 	for i in range(0, 8):

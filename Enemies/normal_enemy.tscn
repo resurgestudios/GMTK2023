@@ -47,7 +47,7 @@ texture = ExtResource("1_5jl2r")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vhaqk")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 515
 collision_mask = 515
