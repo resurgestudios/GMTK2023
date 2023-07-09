@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var ink_speed: int = 200
+@export var ink_speed: float = 500
 @export var ink_cost: float = 5
 var max_jump_dist: float = 500
 var frozen: bool = false
@@ -11,6 +11,8 @@ var start_position: Vector2 = Vector2.ZERO
 var end_position: Vector2 = Vector2.ZERO
 var target_position: Vector2 = Vector2.ZERO
 var frozen_timer: float = 3.0
+var ink_timer: float = 0.0
+var splash_timer: float = 0.0
 
 func _ready():
 	start_position = position
@@ -43,14 +45,23 @@ func _process(delta: float):
 			vec = vec.normalized() * magnitude
 			end_position = start_position + vec
 			move_time = 0.0
-	if Input.is_action_just_pressed("Shoot"):
-		shoot_ink()
+	ink_timer -= delta
+	splash_timer -= delta
+	if Input.is_action_pressed("Shoot"):
+		if ink_timer <= 0.0:
+			shoot_ink()
+			ink_timer = 0.3
+	if Input.is_action_pressed("Splash"):
+		if splash_timer <= 0.0:
+			splash_ink()
+			splash_timer = 1.0
 		
 func shoot_ink():
 	if Global.ink.total_volume() >= ink_cost and frozen == false:
 		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
 		get_tree().root.add_child(ink_inst)
 		var angle = position.angle_to_point(get_global_mouse_position())
+		angle += Global.rng.randf_range(-0.1, 0.1)
 		ink_inst.velocity.y = ink_speed * sin(angle)
 		ink_inst.velocity.x = ink_speed * cos(angle)
 		ink_inst.position = position
@@ -63,6 +74,17 @@ func shoot_ink():
 			ink_inst.get_node("Black").hide()
 		Global.ink.retrieve(ink_cost)
 		
+func splash_ink():
+	if Global.ink.total_volume() >= ink_cost*10 and frozen == false:
+		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
+		ink_inst.position = position
+		get_tree().root.add_child(ink_inst)
+		ink_inst.get_node("Emitter").emitting = true
+		if Global.ink.queue[0].is_ink:
+			ink_inst.get_node("Emitter").color = Color(0, 0, 0)
+		else:
+			ink_inst.get_node("Emitter").color = Color(1, 0, 0)
+		Global.ink.retrieve(ink_cost*10)
 		
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
@@ -82,9 +104,8 @@ func _physics_process(delta):
 			target_velocity = vec / delta
 		else:
 			vec = target_velocity * delta
-#		print(start_position, end_target_position)
 		var collision: KinematicCollision2D = move_and_collide(vec)
-		if collision != null and not collision.get_collider().is_in_group("enemies"):
+		if collision != null and not collision.get_collider().is_in_group("enemies") and not collision.get_collider().is_in_group("projectile"):
 			bounce(collision)
 	if frozen == true:
 		frozen_timer -= delta
@@ -98,6 +119,7 @@ func touch_coffee():
 	Global.ink.retrieve(100)
 	frozen = true
 	frozen_timer = 3.0
+
 	
 	
 
@@ -108,3 +130,8 @@ func _on_map_manager_update_cam_bounds(x, y):
 		$Camera2D.limit_right = x
 	if y != null:
 		$Camera2D.limit_bottom = y
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("projectile"):
+		Global.ink.retrieve(50)
+		# damage effect/sound?

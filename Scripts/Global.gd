@@ -3,6 +3,7 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 var root
 var ink = null
+var score: int = 0
 var map: AStarGrid2D
 var map_w : int = 1
 var map_h : int = 1
@@ -15,15 +16,12 @@ func _ready():
 #		await get_tree().create_timer(1).timeout	
 
 var spawned = false
-@export var ink_draw_rate: float = 2
+@export var ink_draw_rate: float = 1
 @export var ink_draw_interval: float = 0.2
 var timer: float = ink_draw_interval
 
 func _process(delta):
 	if not spawned:
-		# spawn_normal_enemies()
-		# spawn_boss_enemies()
-		# spawn_coffee_enemies()
 		init_navigation()
 		spawned = true
 	if ink != null:
@@ -75,7 +73,7 @@ func spawn_coffee_enemies():
 		get_tree().root.add_child(coffee_enemy_inst)
 		
 func die():
-	print("u died lol")
+	print("you died, your score was ", score)
 	pass
 
 var cell_size: Vector2 = Vector2(64, 64)

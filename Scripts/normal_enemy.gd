@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+var proj_speed: float = 500.0
+var shoot_range: float = 400.0
 var health: float = 100.0
 var regen: float = 2.0
 var shield: float = 0.0
@@ -53,16 +55,27 @@ func _physics_process(delta):
 	timer -= delta
 	if timer <= 0:
 		if following != null:
-			var cur: Vector2i = Global.closest_point(position)
-			var end: Vector2i = Global.closest_point(following.position)
+			var cur: Vector2i = Global.closest_point(global_position)
+			var end: Vector2i = Global.closest_point(following.global_position)
 			var path: PackedVector2Array = Global.map.get_point_path(cur, end)
 			if len(path) > 1:
 				var next: Vector2 = path[1]
-				target_velocity = (next - position).normalized() * speed
+				target_velocity = (next - global_position).normalized() * speed
 		else:
 			direction += Global.rng.randf_range(-1.0, 1.0)
 			target_velocity = speed * Vector2(cos(direction), sin(direction))
 		timer = Global.rng.randf_range(0.75, 1.25)
+		var player_pos: Vector2 = get_node("/root/Main/Printer").global_position
+		if following != null or ((global_position - player_pos).length() <= shoot_range and Global.rng.randi_range(0, 2) == 0):
+			var proj_inst = load("res://Scenes/projectile.tscn").instantiate()
+			get_tree().root.add_child(proj_inst)
+			var angle = global_position.angle_to_point(player_pos)
+			proj_inst.velocity.y = proj_speed * sin(angle)
+			proj_inst.velocity.x = proj_speed * cos(angle)
+			if following != null:
+				proj_inst.velocity *= 1.25
+			proj_inst.position = global_position
+			
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
 		bounce(collision)
@@ -91,10 +104,17 @@ func _on_area_2d_area_entered(area):
 		damage(40.0)
 		if health <= 0.0:
 			die()
+	if area.is_in_group("ink"):
+		die()
 
 func die():
 	# TODO play death animation
+	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
+	blood_inst.position = global_position
+	blood_inst.volume = 50.0
+	get_tree().root.call_deferred("add_child", blood_inst)
 	queue_free()
 
 
 
+# Dewdrop
