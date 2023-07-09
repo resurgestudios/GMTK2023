@@ -17,6 +17,7 @@ func _ready():
 	end_position = position
 	target_position = position
 	move_time = total_move_time
+	
 
 # t: a value between 0 and 1, the progress of the movement
 # return: a multiplier for the velocity to be multiplied by
@@ -89,6 +90,9 @@ func _physics_process(delta):
 		frozen_timer -= delta
 	if frozen_timer <= 0.0:
 		frozen = false
+	
+	$Camera2D.offset = (get_global_mouse_position() - position) * 0.15
+		
 
 func touch_coffee():
 	Global.ink.retrieve(100)
@@ -96,3 +100,11 @@ func touch_coffee():
 	frozen_timer = 3.0
 	
 	
+
+
+#signal from MapManager
+func _on_map_manager_update_cam_bounds(x, y):
+	if x != null:
+		$Camera2D.limit_right = x
+	if y != null:
+		$Camera2D.limit_bottom = y

@@ -36,7 +36,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1.2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.00306414, 0.5)
+"times": PackedFloat32Array(0.00306414, 0.49639)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cag3r"]
@@ -240,7 +240,7 @@ script = ExtResource("1_36f4q")
 
 [node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true
-position = Vector2(52, 43)
+position = Vector2(256, 120)
 scale = Vector2(0.5, 0.5)
 collision_mask = 6
 script = ExtResource("1_fi5u7")
@@ -279,9 +279,10 @@ texture = ExtResource("2_aoy67")
 [node name="MapManager" type="Node2D" parent="."]
 scale = Vector2(3, 3)
 script = ExtResource("1_vxup7")
+variance = 8000.0
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("7_hbgmt")]
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65547, 0, 0, 131083, 0, 0, 196619, 0, 0, 262155, 0, 0, 327691, 0, 0, 393227, 0, 0, 458763, 0, 0, 524299, 0, 0, 589835, 0, 0, 655371, 0, 0, 720907, 0, 0, 720906, 0, 0, 720905, 0, 0, 720904, 0, 0, 720903, 0, 0, 720902, 0, 0, 720901, 0, 0, 720900, 0, 0, 720899, 0, 0, 720898, 0, 0, 720897, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 655360, 0, 0, 720896, 0, 0)
+visible = false
 
 [node name="Navigation" type="Node2D" parent="."]
 
@@ -295,8 +296,5 @@ script = ExtResource("9_8uwy2")
 position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_5233t")
 frame_progress = 0.471209
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(575, 1)
 
 [connection signal="update_cam_bounds" from="MapManager" to="Printer" method="_on_map_manager_update_cam_bounds"]

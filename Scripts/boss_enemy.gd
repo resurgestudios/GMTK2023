@@ -7,6 +7,11 @@ var shield: float = 200.0
 const speed: float = 50
 var target_velocity: Vector2
 
+var active : bool = false
+
+func activate():
+	active = true
+
 func _ready():
 	pass
 
@@ -34,9 +39,11 @@ func bounce(collision: KinematicCollision2D):
 	target_velocity = dir * length
 
 func _physics_process(delta):
+	if not active:
+		return
 	timer -= delta
 	velocity = target_velocity
-	if timer <= 0:
+	if timer <= 0 and Global.map != null:
 		var cur: Vector2i = Global.closest_point(position)
 		var end: Vector2i = Global.closest_point(get_node("/root/Main/Printer").position)
 		var path: PackedVector2Array = Global.map.get_point_path(cur, end)

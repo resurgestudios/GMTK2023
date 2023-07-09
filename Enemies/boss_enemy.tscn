@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cckjmj1yar0m5"]
+[gd_scene load_steps=9 format=3 uid="uid://cckjmj1yar0m5"]
 
 [ext_resource type="Script" path="res://Scripts/boss_enemy.gd" id="1_3x64b"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_6uut0"]
@@ -24,6 +24,7 @@ width = 256
 height = 16
 
 [node name="Boss_Enemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.1, 0.1)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_3x64b")
