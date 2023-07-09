@@ -66,7 +66,6 @@ func _physics_process(delta):
 			target_velocity = speed * Vector2(cos(direction), sin(direction))
 		timer = Global.rng.randf_range(0.75, 1.25)
 		var player_pos: Vector2 = get_node("/root/Main/Printer").global_position
-		print("dist",(global_position - player_pos).length())
 		if following != null or ((global_position - player_pos).length() <= shoot_range and Global.rng.randi_range(0, 2) == 0):
 			var proj_inst = load("res://Scenes/projectile.tscn").instantiate()
 			get_tree().root.add_child(proj_inst)

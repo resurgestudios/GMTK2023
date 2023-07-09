@@ -87,7 +87,7 @@ func _physics_process(delta):
 		else:
 			vec = target_velocity * delta
 		var collision: KinematicCollision2D = move_and_collide(vec)
-		if collision != null and not collision.get_collider().is_in_group("enemies"):
+		if collision != null and not collision.get_collider().is_in_group("enemies") and not collision.get_collider().is_in_group("projectile"):
 			bounce(collision)
 	if frozen == true:
 		frozen_timer -= delta
