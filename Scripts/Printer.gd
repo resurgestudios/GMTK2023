@@ -146,7 +146,7 @@ func _on_area_2d_area_entered(area):
 			$SFX/Damaged1.play()
 		else:
 			$SFX/Damaged2.play()
-  if area.is_in_group("enemies"):
+	if area.is_in_group("enemies"):
 		Global.ink.retrieve(10)
 		if Global.rng.randi_range(0, 1):
 			$SFX/Damaged1.play()
