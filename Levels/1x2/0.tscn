@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="4_503ux"]
 [ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_a5atb"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="4_c32aw"]
-[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="6_tirnq"]
+[ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="6_tirnq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tycyn"]
 size = Vector2(129, 303)
