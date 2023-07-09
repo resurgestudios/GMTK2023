@@ -173,7 +173,7 @@ func _on_map_manager_update_cam_bounds(x, y):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("projectile"):
-		Global.ink.retrieve(50)
+		Global.ink.retrieve(20)
 		if Global.rng.randi_range(0, 1):
 			$SFX/Damaged1.play()
 		else:
