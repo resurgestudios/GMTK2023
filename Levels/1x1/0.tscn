@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://f56538lwjocp"]
+[gd_scene load_steps=10 format=3 uid="uid://f56538lwjocp"]
 
 [ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_bcbh2"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_rddg1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_bgd7d"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="5_xasyb"]
 [ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="7_ac5ao"]
+[ext_resource type="PackedScene" uid="uid://ch1r6wfqrobw7" path="res://Enemies/coffee_enemy.tscn" id="8_xapim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d18xr"]
 size = Vector2(160, 160)
@@ -41,6 +42,10 @@ metadata/Dir = "right"
 [node name="Normal_Enemy" parent="Enemies" instance=ExtResource("3_a8odo")]
 position = Vector2(131, 156)
 scale = Vector2(0.155, 0.155)
+
+[node name="Coffee_Enemy" parent="Enemies" instance=ExtResource("8_xapim")]
+position = Vector2(106, 95)
+scale = Vector2(0.1, 0.1)
 
 [node name="PlayerArea" type="Area2D" parent="."]
 visible = false

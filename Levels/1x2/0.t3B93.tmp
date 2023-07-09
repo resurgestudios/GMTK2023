@@ -25,6 +25,7 @@ scale = Vector2(0.1, 0.1)
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2(7.62939e-06, 7.62939e-06)
+scale = Vector2(1, 1)
 
 [node name="UpDoor" parent="Doors" instance=ExtResource("3_lqffv")]
 metadata/Dir = "up"

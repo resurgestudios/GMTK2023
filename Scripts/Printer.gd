@@ -59,7 +59,7 @@ func _process(delta: float):
 func shoot_ink():
 	if Global.ink.total_volume() >= ink_cost and frozen == false:
 		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
-		get_tree().root.add_child(ink_inst)
+		Global.root.get_node("Splashes").add_child(ink_inst)
 		var angle = position.angle_to_point(get_global_mouse_position())
 		angle += Global.rng.randf_range(-0.1, 0.1)
 		ink_inst.velocity.y = ink_speed * sin(angle)
@@ -78,7 +78,7 @@ func splash_ink():
 	if Global.ink.total_volume() >= ink_cost*10 and frozen == false:
 		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
 		ink_inst.position = position
-		get_tree().root.add_child(ink_inst)
+		Global.root.get_node("Splashes").add_child(ink_inst)
 		ink_inst.get_node("Emitter").emitting = true
 		if Global.ink.queue[0].is_ink:
 			ink_inst.get_node("Emitter").color = Color(0, 0, 0)
