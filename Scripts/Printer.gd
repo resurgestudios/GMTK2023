@@ -12,6 +12,7 @@ var end_position: Vector2 = Vector2.ZERO
 var target_position: Vector2 = Vector2.ZERO
 var frozen_timer: float = 3.0
 var ink_timer: float = 0.0
+var splash_timer: float = 0.0
 
 func _ready():
 	start_position = position
@@ -48,6 +49,10 @@ func _process(delta: float):
 		if ink_timer <= 0.0:
 			shoot_ink()
 			ink_timer = 0.3
+	if Input.is_action_pressed("Shoot"):
+		if splash_timer <= 0.0:
+			splash_ink()
+			splash_timer = 30.0
 		
 func shoot_ink():
 	if Global.ink.total_volume() >= ink_cost and frozen == false:
@@ -67,6 +72,12 @@ func shoot_ink():
 			ink_inst.get_node("Black").hide()
 		Global.ink.retrieve(ink_cost)
 		
+func splash_ink():
+	if Global.ink.total_volume() >= ink_cost*10 and frozen == false:
+		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
+		ink_inst.position = position
+		get_tree().root.add_child(ink_inst)
+		ink_inst.emitting = true
 		
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
