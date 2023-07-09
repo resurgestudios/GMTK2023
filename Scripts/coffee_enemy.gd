@@ -5,6 +5,9 @@ var rng = RandomNumberGenerator.new()
 const speed: float = 50
 var target_velocity: Vector2
 var active : bool = false
+var health: float = 100.0
+var regen: float = 2.0
+var shield: float = 100.0
 
 func _ready():
 	pass
@@ -47,17 +50,52 @@ func _physics_process(delta):
 			var normal_enemy_inst = load("res://Enemies/normal_enemy.tscn").instantiate()
 			normal_enemy_inst.position = position
 			normal_enemy_inst.add_to_group("normal")
+			normal_enemy_inst.health = health
+			normal_enemy_inst.shield = shield
 			get_parent().add_child(normal_enemy_inst)
 			normal_enemy_inst.activate()
 			queue_free()
 		
-		
+func _process(delta):
+	health += regen * delta	
+	health = min(health, 100.0)
+	$HealthBar.value = health
+	$ShieldBar.value = shield
 
 func shoot_coffee():
 	var coffee_inst = load("res://Scenes/coffee.tscn").instantiate()
 	Global.root.get_node("Splashes").add_child(coffee_inst)
 	coffee_inst.global_position = global_position
-	
-func die():
-	Global.score += 20
 
+func damage(delta: float):
+	var shield_delta: float = min(delta, shield)
+	shield -= shield_delta
+	delta -= shield_delta
+	health -= delta
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("paper"):
+		damage(40.0)
+		if health <= 0.0:
+			die()
+	if area.is_in_group("ink"):
+		die()
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("printer"):
+		var dmg: float = min(80, health + shield)
+		# TODO play death/attack animation
+		Global.ink.retrieve(dmg / 5.0)
+		damage(dmg)
+		if health <= 0:
+			die()
+
+func die():
+	# TODO play death animation
+	Global.score += 20
+	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
+	blood_inst.position = global_position
+	blood_inst.volume = 50.0
+	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
+	queue_free()
