@@ -61,12 +61,12 @@ func create_section(x, y):
 	var tx
 	var ty
 	
-	#2x1
-	for i in range(0, 2):
-		ty = y - i
-		if empty_map.has([x, ty]) && empty_map.has([x+1, ty]):
-			possible_sizes.append([2, 1])
-			possible_poses.append([x, ty])
+#	#2x1
+#	for i in range(0, 2):
+#		ty = y - i
+#		if empty_map.has([x, ty]) && empty_map.has([x+1, ty]):
+#			possible_sizes.append([2, 1])
+#			possible_poses.append([x, ty])
 	
 	#1x2
 	for i in range(0, 2):
@@ -223,7 +223,7 @@ func create_section(x, y):
 						c.queue_free()
 		
 		if pos[1] == 0:
-			if i.y == 0 && i.x != 0 && i.x != section_w - 1:
+			if i.y == 0 && i.x != 0 && i.x != section_w - size[0]:
 				a_coords = Vector2i(0, 0)
 				inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
 				inst.set_cell(0, Vector2i(i.x, i.y + 1), 0, Vector2i(0, 1))

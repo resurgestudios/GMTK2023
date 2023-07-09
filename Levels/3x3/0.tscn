@@ -48,6 +48,7 @@ position = Vector2(300, 100)
 position = Vector2(236, 93)
 
 [node name="PlayerArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 script = ExtResource("4_x55jo")
 

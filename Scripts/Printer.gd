@@ -37,8 +37,22 @@ func _process(delta: float):
 	if move_time >= total_move_time:
 		$AnimatedSprite2D.stop() # change this to play idle animation
 		if Input.is_action_just_pressed("Jump") and not frozen:
-			$AnimatedSprite2D.play("jump")
-			$SFX/Move.play()
+			var ang = rad_to_deg(position.angle_to_point(get_global_mouse_position()))
+			if ang < -45 && ang > -135:
+				$AnimatedSprite2D.play("back_jump")
+				$AnimatedSprite2D.scale.x = 1
+				
+			if ang > -45 && ang < 0 || ang > 0 && ang < 45:
+				$AnimatedSprite2D.play("side_jump")
+				$AnimatedSprite2D.scale.x = -1
+				
+			if ang > 45 && ang < 135:
+				$AnimatedSprite2D.play("jump")
+				$AnimatedSprite2D.scale.x = 1
+			if ang > 135 && ang < 180 || ang < -135 && ang > -180:
+				$AnimatedSprite2D.play("side_jump")
+				$AnimatedSprite2D.scale.x = 1
+				
 			target_velocity = Vector2.ZERO
 			start_position = global_position
 			end_position = get_global_mouse_position()
