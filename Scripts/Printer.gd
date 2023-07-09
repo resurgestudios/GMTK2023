@@ -45,14 +45,15 @@ func _process(delta: float):
 			end_position = start_position + vec
 			move_time = 0.0
 	ink_timer -= delta
+	splash_timer -= delta
 	if Input.is_action_pressed("Shoot"):
 		if ink_timer <= 0.0:
 			shoot_ink()
 			ink_timer = 0.3
-	if Input.is_action_pressed("Shoot"):
+	if Input.is_action_pressed("Splash"):
 		if splash_timer <= 0.0:
 			splash_ink()
-			splash_timer = 30.0
+			splash_timer = 1.0
 		
 func shoot_ink():
 	if Global.ink.total_volume() >= ink_cost and frozen == false:
@@ -78,6 +79,11 @@ func splash_ink():
 		ink_inst.position = position
 		get_tree().root.add_child(ink_inst)
 		ink_inst.get_node("Emitter").emitting = true
+		if Global.ink.queue[0].is_ink:
+			ink_inst.get_node("Emitter").color = Color(0, 0, 0)
+		else:
+			ink_inst.get_node("Emitter").color = Color(1, 0, 0)
+		Global.ink.retrieve(ink_cost*10)
 		
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()

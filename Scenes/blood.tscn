@@ -7,7 +7,7 @@
 size = Vector2(100, 100)
 
 [node name="blood" type="Node2D"]
-z_index = 1
+z_index = 2
 script = ExtResource("1_fx2im")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
