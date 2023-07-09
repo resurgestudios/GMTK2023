@@ -113,7 +113,7 @@ func die():
 	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
 	blood_inst.position = global_position
 	blood_inst.volume = 50.0
-	Global.root.get_node("Splashes").add_child(blood_inst)
+	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
 	queue_free()
 
 

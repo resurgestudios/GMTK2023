@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var ink_speed: float = 500
+@export var ink_speed: float = 800
 @export var ink_cost: float = 5
 var max_jump_dist: float = 500
 var frozen: bool = false
@@ -35,7 +35,7 @@ func easing(t: float) -> float:
 func _process(delta: float):
 	if move_time >= total_move_time:
 		$AnimatedSprite2D.stop() # change this to play idle animation
-		if Input.is_action_just_pressed("Jump"):
+		if Input.is_action_just_pressed("Jump") and not frozen:
 			$AnimatedSprite2D.play("jump")
 			target_velocity = Vector2.ZERO
 			start_position = position
@@ -47,17 +47,17 @@ func _process(delta: float):
 			move_time = 0.0
 	ink_timer -= delta
 	splash_timer -= delta
-	if Input.is_action_pressed("Shoot"):
+	if Input.is_action_pressed("Shoot") and not frozen:
 		if ink_timer <= 0.0:
 			shoot_ink()
 			ink_timer = 0.3
-	if Input.is_action_pressed("Splash"):
+	if Input.is_action_pressed("Splash") and not frozen:
 		if splash_timer <= 0.0:
 			splash_ink()
 			splash_timer = 1.0
 		
 func shoot_ink():
-	if Global.ink.total_volume() >= ink_cost and frozen == false:
+	if Global.ink.total_volume() >= ink_cost:
 		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
 		Global.root.get_node("Splashes").add_child(ink_inst)
 		var angle = position.angle_to_point(get_global_mouse_position())
@@ -75,7 +75,7 @@ func shoot_ink():
 		Global.ink.retrieve(ink_cost)
 		
 func splash_ink():
-	if Global.ink.total_volume() >= ink_cost*10 and frozen == false:
+	if Global.ink.total_volume() >= ink_cost*10:
 		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
 		ink_inst.position = position
 		Global.root.get_node("Splashes").add_child(ink_inst)
