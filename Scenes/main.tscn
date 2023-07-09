@@ -345,7 +345,7 @@ sprite_frames = SubResource("SpriteFrames_5233t")
 frame_progress = 0.471209
 
 [node name="InkBarBackground" type="Sprite2D" parent="CanvasLayer/BigInkBar"]
-position = Vector2(61, 403)
+position = Vector2(60, 520)
 texture = ExtResource("10_7gwhk")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
