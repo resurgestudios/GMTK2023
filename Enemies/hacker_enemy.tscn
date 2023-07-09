@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuf1hq3mlr5uj"]
+[gd_scene load_steps=4 format=3 uid="uid://147px4x7b654"]
 
 [ext_resource type="Script" path="res://Scripts/hacker_enemy.gd" id="1_cr3hr"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_ruprt"]

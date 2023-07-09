@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://w6r8m8dholer"]
+[gd_scene load_steps=4 format=3 uid="uid://ch1r6wfqrobw7"]
 
 [ext_resource type="Script" path="res://Scripts/coffee_enemy.gd" id="1_283j4"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_70abs"]
