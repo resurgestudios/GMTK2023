@@ -1,7 +1,7 @@
 extends CharacterBody2D
 	
 var rng = RandomNumberGenerator.new()
-var threshold: float = 20.0
+var threshold: float = 0.0;
 var angular_velocity: float = 1.0
 	
 func _ready():
