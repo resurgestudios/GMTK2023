@@ -7,7 +7,9 @@
 size = Vector2(128, 129)
 
 [node name="Coffee_Enemy" type="CharacterBody2D" groups=["enemy"]]
-z_index = 2
+z_index = 3
+collision_layer = 518
+collision_mask = 519
 script = ExtResource("1_283j4")
 metadata/_edit_group_ = true
 

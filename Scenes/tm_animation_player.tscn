@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cihq1an3y8nob"]
+
+[sub_resource type="Animation" id="Animation_n7pc3"]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uxwst"]
+_data = {
+"Fade": SubResource("Animation_n7pc3")
+}
+
+[node name="TMAnimationPlayer" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_uxwst")
+}

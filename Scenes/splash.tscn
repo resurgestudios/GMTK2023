@@ -1,20 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmtdcjabv04qd"]
-
-[ext_resource type="Texture2D" uid="uid://7eh52sytpr0a" path="res://Art/ BlackSquare.png" id="1_eeo6a"]
+[gd_scene load_steps=2 format=3 uid="uid://bmtdcjabv04qd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xre3o"]
-radius = 100.0
+radius = 80.0
 
 [node name="splash" type="Node2D" groups=["ink"]]
+z_index = 1
+z_as_relative = false
 
 [node name="Emitter" type="CPUParticles2D" parent="."]
-amount = 20
-lifetime = 30.0
+z_index = 1
+z_as_relative = false
+emitting = false
+amount = 30
+lifetime = 600.0
 one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0
 randomness = 1.0
-texture = ExtResource("1_eeo6a")
+local_coords = true
 emission_shape = 1
 emission_sphere_radius = 10.0
 spread = 180.0
@@ -24,6 +27,8 @@ initial_velocity_max = 100.0
 damping_min = 100.0
 damping_max = 100.0
 angle_max = 360.0
+scale_amount_min = 30.0
+scale_amount_max = 40.0
 
 [node name="Area2D" type="Area2D" parent="." groups=["ink"]]
 collision_layer = 512

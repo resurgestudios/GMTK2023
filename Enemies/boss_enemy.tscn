@@ -24,8 +24,10 @@ width = 256
 height = 16
 
 [node name="Boss_Enemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 2
-collision_mask = 13
+scale = Vector2(0.1, 0.1)
+z_index = 3
+collision_layer = 514
+collision_mask = 525
 script = ExtResource("1_3x64b")
 metadata/_edit_group_ = true
 
