@@ -386,7 +386,7 @@ script = ExtResource("1_36f4q")
 
 [node name="Printer" type="CharacterBody2D" parent="." groups=["printer"]]
 top_level = true
-z_index = 3
+z_index = 100
 position = Vector2(93, 62)
 scale = Vector2(1e-05, 1e-05)
 collision_layer = 524289
