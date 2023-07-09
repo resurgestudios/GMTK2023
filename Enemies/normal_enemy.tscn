@@ -1,7 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwytb7btfr43o"]
+[gd_scene load_steps=14 format=3 uid="uid://bwytb7btfr43o"]
 
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="1_5jl2r"]
 [ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
+[ext_resource type="AudioStream" uid="uid://bsanmohrax64o" path="res://Sounds/human death.mp3" id="3_3px1y"]
+[ext_resource type="AudioStream" uid="uid://rjodgwlvb0sr" path="res://Sounds/human enraged.mp3" id="4_c8nvb"]
+[ext_resource type="AudioStream" uid="uid://cditdxuv64vs7" path="res://Sounds/Humanhit 1.mp3" id="5_m56eh"]
+[ext_resource type="AudioStream" uid="uid://2h3rfr8c5ws6" path="res://Sounds/human shoot.mp3" id="6_2nwfr"]
+[ext_resource type="AudioStream" uid="uid://ds12b73bet21" path="res://Sounds/Humanhit 2.mp3" id="6_jbkmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
 size = Vector2(128, 129)
@@ -72,6 +77,25 @@ offset_right = 64.0
 offset_bottom = -88.0
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_mctw8")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_3px1y")
+
+[node name="Enraged" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_c8nvb")
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_m56eh")
+volume_db = 1.0
+
+[node name="Hit2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_jbkmm")
+volume_db = 1.0
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_2nwfr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

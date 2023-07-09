@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2h3rfr8c5ws6"
+path="res://.godot/imported/human shoot.mp3-5ffbebd22d0fdfd0ff7d278d0fe90f00.mp3str"
+
+[deps]
+
+source_file="res://Sounds/human shoot.mp3"
+dest_files=["res://.godot/imported/human shoot.mp3-5ffbebd22d0fdfd0ff7d278d0fe90f00.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

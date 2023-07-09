@@ -72,6 +72,10 @@ func damage(delta: float):
 	shield -= shield_delta
 	delta -= shield_delta
 	health -= delta
+	if Global.rng.randi_range(0, 1):
+		$SFX/Hit.play()
+	else:
+		$SFX/Hit2.play()
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("paper"):
@@ -93,9 +97,10 @@ func _on_area_2d_body_entered(body):
 
 func die():
 	# TODO play death animation
-	Global.score += 20
+	Global.score += 50
 	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
 	blood_inst.position = global_position
-	blood_inst.volume = 50.0
+	blood_inst.volume = 75.0
 	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
+	$SFX/Death.play()
 	queue_free()

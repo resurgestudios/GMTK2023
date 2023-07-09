@@ -22,6 +22,10 @@ func damage(delta: float):
 	shield -= shield_delta
 	delta -= shield_delta
 	health -= delta
+	if Global.rng.randi_range(0, 1):
+		$SFX/Hit.play()
+	else:
+		$SFX/Hit2.play()
 	
 func _process(delta):
 	health += regen * delta	
@@ -80,4 +84,5 @@ func die():
 	blood_inst.position = global_position
 	blood_inst.volume = 100.0
 	get_tree().root.call_deferred("add_child", blood_inst)
+	$SFX/Death.play()
 	queue_free()

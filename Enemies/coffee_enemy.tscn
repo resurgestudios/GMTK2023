@@ -1,7 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch1r6wfqrobw7"]
+[gd_scene load_steps=15 format=3 uid="uid://ch1r6wfqrobw7"]
 
 [ext_resource type="Script" path="res://Scripts/coffee_enemy.gd" id="1_283j4"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_70abs"]
+[ext_resource type="AudioStream" uid="uid://bw732ugcodqfb" path="res://Sounds/coffee drop-[AudioTrimmer.com].mp3" id="3_jfl0s"]
+[ext_resource type="AudioStream" uid="uid://bsanmohrax64o" path="res://Sounds/human death.mp3" id="4_vyvsy"]
+[ext_resource type="AudioStream" uid="uid://rjodgwlvb0sr" path="res://Sounds/human enraged.mp3" id="5_nl4o0"]
+[ext_resource type="AudioStream" uid="uid://cditdxuv64vs7" path="res://Sounds/Humanhit 1.mp3" id="6_ew2mg"]
+[ext_resource type="AudioStream" uid="uid://ds12b73bet21" path="res://Sounds/Humanhit 2.mp3" id="7_611u4"]
+[ext_resource type="AudioStream" uid="uid://2h3rfr8c5ws6" path="res://Sounds/human shoot.mp3" id="7_gqbvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
 size = Vector2(128, 129)
@@ -67,6 +73,29 @@ collision_mask = 515
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_5xvxq")
+
+[node name="DropCoffee" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jfl0s")
+volume_db = 24.0
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_vyvsy")
+
+[node name="Enraged" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_nl4o0")
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_ew2mg")
+volume_db = 1.0
+
+[node name="Hit2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_611u4")
+volume_db = 1.0
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_gqbvv")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
