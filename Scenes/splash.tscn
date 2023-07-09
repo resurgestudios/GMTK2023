@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmtdcjabv04qd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xre3o"]
-radius = 80.0
+radius = 100.0
 
 [node name="splash" type="Node2D" groups=["ink"]]
 z_index = 1
@@ -10,8 +10,7 @@ z_as_relative = false
 [node name="Emitter" type="CPUParticles2D" parent="."]
 z_index = 1
 z_as_relative = false
-emitting = false
-amount = 30
+amount = 100
 lifetime = 600.0
 one_shot = true
 speed_scale = 4.0
@@ -19,11 +18,11 @@ explosiveness = 1.0
 randomness = 1.0
 local_coords = true
 emission_shape = 1
-emission_sphere_radius = 10.0
+emission_sphere_radius = 15.0
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
-initial_velocity_max = 100.0
+initial_velocity_max = 120.0
 damping_min = 100.0
 damping_max = 100.0
 angle_max = 360.0

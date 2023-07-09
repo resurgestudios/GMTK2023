@@ -85,12 +85,6 @@ func follow():
 
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("boss") and following == null:
-		$Normal.hide()
-		$Angry.show()
-		following = body
-		shield += 50.0
-		body.damage(50.0)
 	if body.is_in_group("printer"):
 		var dmg: float = min(80, health + shield)
 		# TODO play death/attack animation
@@ -100,6 +94,12 @@ func _on_area_2d_body_entered(body):
 			die()
 
 func _on_area_2d_area_entered(area):
+	if area.is_in_group("boss") and following == null:
+		$Normal.hide()
+		$Angry.show()
+		following = area.get_parent()
+		shield += 50.0
+		following.damage(50.0)
 	if area.is_in_group("paper"):
 		damage(40.0)
 		if health <= 0.0:

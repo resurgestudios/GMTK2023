@@ -70,6 +70,8 @@ func _on_area_2d_area_entered(area):
 		damage(40.0)
 		if health <= 0.0:
 			die()
+	if area.is_in_group("ink"):
+		die()
 
 func die():
 	# TODO play death animation
