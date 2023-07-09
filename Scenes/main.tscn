@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=41 format=3 uid="uid://3xwx3j3copoq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="PackedScene" uid="uid://b4m2v1tm2gun6" path="res://Scenes/flow.tscn" id="9_vg42r"]
-[ext_resource type="PackedScene" uid="uid://bmtdcjabv04qd" path="res://Scenes/splash.tscn" id="10_6jwp5"]
 [ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
@@ -312,8 +311,5 @@ script = ExtResource("9_8uwy2")
 position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_5233t")
 frame_progress = 0.471209
-
-[node name="splash" parent="." instance=ExtResource("10_6jwp5")]
-position = Vector2(155.07, 140.12)
 
 [connection signal="area_entered" from="Printer/Area2D" to="Printer" method="_on_area_2d_area_entered"]

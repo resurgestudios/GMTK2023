@@ -37,3 +37,5 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_xre3o")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
