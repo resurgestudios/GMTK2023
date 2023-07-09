@@ -392,7 +392,6 @@ variance = 0.0
 [node name="Navigation" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Score" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 116.0
