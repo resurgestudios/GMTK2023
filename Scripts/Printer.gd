@@ -190,3 +190,6 @@ func die():
 		print("lmfao")
 		$SFX/Death.play()
 		dead = true
+		var scene = preload("res://Scenes/GameOver.tscn").instantiate()
+		get_tree().root.add_child(scene)
+		get_node("/root/Main").queue_free()
