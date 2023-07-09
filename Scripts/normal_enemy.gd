@@ -115,7 +115,3 @@ func die():
 	blood_inst.volume = 50.0
 	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
 	queue_free()
-
-
-
-# Dewdrop
