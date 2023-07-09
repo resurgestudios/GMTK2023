@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="3_7qi82"]
 [ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_bgd7d"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="5_xasyb"]
-[ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="7_ac5ao"]
+[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="7_ac5ao"]
 [ext_resource type="PackedScene" uid="uid://ch1r6wfqrobw7" path="res://Enemies/coffee_enemy.tscn" id="8_xapim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kfyv"]
