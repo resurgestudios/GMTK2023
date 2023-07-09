@@ -1,19 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://c872jlk18n2n2"]
+[gd_scene load_steps=9 format=3 uid="uid://ds3ef6eeiqeuw"]
 
-[ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_0hqol"]
-[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_3j4ae"]
-[ext_resource type="PackedScene" uid="uid://cckjmj1yar0m5" path="res://Enemies/boss_enemy.tscn" id="3_0jbq2"]
-[ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="3_lqffv"]
-[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="4_503ux"]
-[ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_a5atb"]
-[ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="4_c32aw"]
-[ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="6_tirnq"]
+[ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_n5p1v"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_vbcwe"]
+[ext_resource type="PackedScene" uid="uid://ch1r6wfqrobw7" path="res://Enemies/coffee_enemy.tscn" id="3_ebcbe"]
+[ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="4_okycg"]
+[ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="5_rlohw"]
+[ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="6_350rb"]
+[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="7_thawf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tycyn"]
 size = Vector2(129, 303)
 
 [node name="TileMap" type="TileMap" groups=["1x2", "section"]]
-tile_set = ExtResource("1_0hqol")
+tile_set = ExtResource("1_n5p1v")
 format = 2
 layer_0/name = "main"
 layer_0/tile_data = PackedInt32Array(1, 0, 0, 65537, 0, 1, 262145, 1114112, 9, 327681, 1179648, 9, 393217, 1114112, 9, 458753, 1179648, 9, 524289, 1114112, 9, 589825, 1179648, 9, 655361, 1114112, 9, 65538, 0, 1, 262146, 1179648, 9, 327682, 1114112, 9, 393218, 1179648, 9, 458754, 1114112, 9, 524290, 1179648, 9, 589826, 1114112, 9, 655362, 1179648, 9, 3, 0, 0, 65539, 0, 1, 131075, 1114112, 9, 196611, 1179648, 9, 262147, 1114112, 9, 327683, 1179648, 9, 393219, 1114112, 9, 458755, 1179648, 9, 524291, 1114112, 9, 589827, 1179648, 9, 655363, 1114112, 9, 131076, 1179648, 9, 196612, 1114112, 9, 262148, 1179648, 9, 327684, 1114112, 9, 393220, 1179648, 9, 458756, 1114112, 9, 524292, 1179648, 9, 589828, 1114112, 9, 655364, 1179648, 9, 131077, 1114112, 9, 196613, 1179648, 9, 262149, 1114112, 9, 327685, 1179648, 9, 393221, 1114112, 9, 458757, 1179648, 9, 524293, 1114112, 9, 589829, 1179648, 9, 655365, 1114112, 9, 131078, 1179648, 9, 196614, 1114112, 9, 262150, 1179648, 9, 327686, 1114112, 9, 393222, 1179648, 9, 458758, 1114112, 9, 524294, 1179648, 9, 589830, 1114112, 9, 655366, 1179648, 9, 131079, 1114112, 9, 196615, 1179648, 9, 262151, 1114112, 9, 327687, 1179648, 9, 393223, 1114112, 9, 458759, 1179648, 9, 524295, 1114112, 9, 589831, 1179648, 9, 655367, 1114112, 9, 8, 0, 0, 65544, 0, 1, 131080, 1179648, 9, 196616, 1114112, 9, 262152, 1179648, 9, 327688, 1114112, 9, 393224, 1179648, 9, 458760, 1114112, 9, 524296, 1179648, 9, 589832, 1114112, 9, 655368, 1179648, 9, 9, 0, 0, 65545, 0, 1, 131081, 1114112, 9, 196617, 1179648, 9, 262153, 1114112, 9, 327689, 1179648, 9, 393225, 1114112, 9, 458761, 1179648, 9, 524297, 1114112, 9, 589833, 1179648, 9, 655369, 1114112, 9, 10, 0, 0, 65546, 0, 1, 131082, 1179648, 9, 196618, 1114112, 9, 262154, 1179648, 9, 327690, 1114112, 9, 393226, 1179648, 9, 458762, 1114112, 9, 524298, 1179648, 9, 589834, 1114112, 9, 655370, 1179648, 9, 0, 1376256, 9, 131072, 1376256, 9, 327680, 1114112, 9, 393216, 1179648, 9, 589824, 1376256, 9, 655360, 1376256, 9, 2, 0, 0, 65536, 1376256, 9, 786432, 1376256, 9, 851968, 1376256, 9, 917504, 1376256, 9, 1048576, 1179648, 9, 1245184, 1376256, 9, 1310720, 1376256, 9, 1376256, 1376256, 9, 1441792, 1376256, 9, 786433, 1114112, 9, 851969, 1179648, 9, 917505, 1114112, 9, 983041, 1179648, 9, 1048577, 1114112, 9, 1114113, 1179648, 9, 1179649, 1114112, 9, 1245185, 1179648, 9, 1310721, 1114112, 9, 1376257, 1179648, 9, 1441793, 0, 0, 786434, 1179648, 9, 851970, 1114112, 9, 917506, 1179648, 9, 983042, 1114112, 9, 1048578, 1179648, 9, 1114114, 1114112, 9, 1179650, 1179648, 9, 1245186, 1114112, 9, 1376258, 1114112, 9, 1441794, 0, 0, 786435, 1114112, 9, 851971, 1179648, 9, 917507, 1114112, 9, 983043, 1179648, 9, 1048579, 1114112, 9, 1114115, 1179648, 9, 1179651, 1114112, 9, 1245187, 1179648, 9, 1310723, 1114112, 9, 1376259, 1179648, 9, 1441795, 0, 0, 851972, 1114112, 9, 917508, 1179648, 9, 983044, 1114112, 9, 1048580, 1179648, 9, 1114116, 1114112, 9, 1179652, 1179648, 9, 1245188, 1114112, 9, 1310724, 1179648, 9, 1376260, 1114112, 9, 786437, 1114112, 9, 851973, 1179648, 9, 917509, 1114112, 9, 983045, 1179648, 9, 1048581, 1114112, 9, 1114117, 1179648, 9, 1179653, 1114112, 9, 1245189, 1179648, 9, 1310725, 1114112, 9, 1376261, 1179648, 9, 786438, 1179648, 9, 851974, 1114112, 9, 917510, 1179648, 9, 983046, 1114112, 9, 1048582, 1179648, 9, 1114118, 1114112, 9, 1179654, 1179648, 9, 1245190, 1114112, 9, 1310726, 1179648, 9, 1376262, 1114112, 9, 786439, 1114112, 9, 851975, 1179648, 9, 917511, 1114112, 9, 983047, 1179648, 9, 1048583, 1114112, 9, 1114119, 1179648, 9, 1179655, 1114112, 9, 1245191, 1179648, 9, 1310727, 1114112, 9, 1376263, 1179648, 9, 786440, 1179648, 9, 851976, 1114112, 9, 917512, 1179648, 9, 983048, 1114112, 9, 1048584, 1179648, 9, 1114120, 1114112, 9, 1179656, 1179648, 9, 1245192, 1114112, 9, 1310728, 1179648, 9, 1376264, 1114112, 9, 1441800, 0, 0, 786441, 1114112, 9, 851977, 1179648, 9, 917513, 1114112, 9, 983049, 1179648, 9, 1048585, 1114112, 9, 1114121, 1179648, 9, 1179657, 1114112, 9, 1245193, 1179648, 9, 1310729, 1114112, 9, 1376265, 1179648, 9, 1441801, 0, 0, 786442, 1179648, 9, 851978, 1114112, 9, 917514, 1179648, 9, 983050, 1114112, 9, 1048586, 1179648, 9, 1114122, 1114112, 9, 1179658, 1179648, 9, 1245194, 1114112, 9, 1310730, 1179648, 9, 1376266, 1114112, 9, 1441802, 0, 0, 11, 1310720, 9, 65547, 1310720, 9, 131083, 1310720, 9, 327691, 1179648, 9, 393227, 1114112, 9, 589835, 1310720, 9, 655371, 1310720, 9, 786443, 1310720, 9, 851979, 1310720, 9, 917515, 1310720, 9, 1048587, 1114112, 9, 1114123, 1179648, 9, 1245195, 1310720, 9, 1310731, 1310720, 9, 1376267, 1310720, 9, 1441803, 1310720, 9, 786436, 1179648, 9, 720907, 1310720, 9, 720906, 1114112, 9, 720905, 1179648, 9, 720904, 1114112, 9, 720903, 1179648, 9, 720902, 1114112, 9, 720901, 1179648, 9, 720900, 1114112, 9, 720899, 1179648, 9, 720898, 1114112, 9, 720897, 1179648, 9, 720896, 1376256, 9, 1310722, 1179648, 9, 196609, 1179648, 9, 131074, 1179648, 9, 196610, 1114112, 9, 131073, 1114112, 9, 1441797, 1114112, 9, 1441798, 1179648, 9, 1114112, 1114112, 9, 196619, 1310720, 9, 524299, 1310720, 9, 524288, 1376256, 9, 196608, 1376256, 9, 1441796, 1179648, 9, 1441799, 1114112, 9, 1179659, 1114112, 9, 983051, 1179648, 9, 983040, 1114112, 9, 1179648, 1179648, 9, 262144, 1179648, 9, 458752, 1114112, 9, 458763, 1179648, 9, 262155, 1114112, 9, 65542, 1114112, 9, 65540, 1114112, 9, 5, 1114112, 9, 7, 1114112, 9, 65541, 1179648, 9, 6, 1179648, 9, 65543, 1179648, 9, 4, 1179648, 9)
@@ -23,7 +22,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(655363, 458752, 12, 720899, 458752, 13, 786435, 458752, 14, 655368, 589824, 12, 720904, 589824, 13, 786440, 589824, 14)
+layer_1/tile_data = PackedInt32Array(131074, 720896, 5, 196610, 720896, 6, 1245193, 720896, 5, 1310729, 720896, 6, 655362, 917504, 5, 720898, 917504, 6, 655369, 917504, 5, 720905, 917504, 6)
 layer_2/name = "decorations2"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
@@ -31,54 +30,54 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 10
 layer_2/tile_data = PackedInt32Array()
-script = ExtResource("2_3j4ae")
+script = ExtResource("2_vbcwe")
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Boss_Enemy" parent="Enemies" instance=ExtResource("3_0jbq2")]
-position = Vector2(97, 183)
+[node name="Coffee_Enemy" parent="Enemies" instance=ExtResource("3_ebcbe")]
+position = Vector2(96, 99)
 
-[node name="Normal_Enemy" parent="Enemies" instance=ExtResource("4_503ux")]
-position = Vector2(95, 100)
+[node name="Coffee_Enemy2" parent="Enemies" instance=ExtResource("3_ebcbe")]
+position = Vector2(96, 184)
 
-[node name="Normal_Enemy2" parent="Enemies" instance=ExtResource("4_503ux")]
-position = Vector2(96, 269)
+[node name="Coffee_Enemy3" parent="Enemies" instance=ExtResource("3_ebcbe")]
+position = Vector2(96, 273)
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2(7.62939e-06, 7.62939e-06)
 
-[node name="UpDoor" parent="Doors" instance=ExtResource("3_lqffv")]
+[node name="UpDoor" parent="Doors" instance=ExtResource("4_okycg")]
 metadata/Dir = "up"
 
-[node name="UpDoor2" parent="Doors" instance=ExtResource("3_lqffv")]
+[node name="UpDoor2" parent="Doors" instance=ExtResource("4_okycg")]
 position = Vector2(96, 360)
 metadata/Dir = "down"
 
-[node name="LeftDoor" parent="Doors" instance=ExtResource("4_a5atb")]
+[node name="LeftDoor" parent="Doors" instance=ExtResource("5_rlohw")]
 metadata/Dir = "left"
 
-[node name="LeftDoor2" parent="Doors" instance=ExtResource("4_a5atb")]
+[node name="LeftDoor2" parent="Doors" instance=ExtResource("5_rlohw")]
 position = Vector2(8, 272)
 metadata/Dir = "left"
 
-[node name="LeftDoor3" parent="Doors" instance=ExtResource("4_a5atb")]
+[node name="LeftDoor3" parent="Doors" instance=ExtResource("5_rlohw")]
 position = Vector2(184, 272)
 metadata/Dir = "right"
 
-[node name="LeftDoor4" parent="Doors" instance=ExtResource("4_a5atb")]
+[node name="LeftDoor4" parent="Doors" instance=ExtResource("5_rlohw")]
 position = Vector2(184, 96)
 metadata/Dir = "right"
 
 [node name="PlayerArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-script = ExtResource("4_c32aw")
+script = ExtResource("6_350rb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
 position = Vector2(95.5, 183.5)
 shape = SubResource("RectangleShape2D_tycyn")
 
-[node name="TMAnimationPlayer" parent="." instance=ExtResource("6_tirnq")]
+[node name="TMAnimationPlayer" parent="." instance=ExtResource("7_thawf")]
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
 [connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]

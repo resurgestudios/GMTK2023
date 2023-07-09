@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=64 format=3 uid="uid://3xwx3j3copoq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d4dpb2fnbq4vo" path="res://Sounds/ink splash.mp3" id="5_p6m2f"]
 [ext_resource type="Texture2D" uid="uid://dbnxidfjj146k" path="res://Art/printer_jump..png" id="5_xnxyt"]
 [ext_resource type="AudioStream" uid="uid://dnp780ln4ohd1" path="res://Sounds/printer move.mp3" id="6_f5kj7"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
+[ext_resource type="PackedScene" uid="uid://b3i6t4iovg6eu" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
 [ext_resource type="AudioStream" uid="uid://hq3uyld27ysv" path="res://Sounds/printer hit 1.mp3" id="8_k8b7p"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="AudioStream" uid="uid://cv621hnvubs1p" path="res://Sounds/printer hit 2.mp3" id="9_fw1sx"]
@@ -195,6 +195,86 @@ data = PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 4, 0, 4, 0, 0, 0,
 format = 1
 stereo = true
 
+[sub_resource type="Animation" id="Animation_3lgvw"]
+resource_name = "end"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.28, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_q735h"]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.28, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_antbn"]
+_data = {
+"end": SubResource("Animation_3lgvw"),
+"start": SubResource("Animation_q735h")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bukeu"]
 atlas = ExtResource("11_uid8i")
 region = Rect2(0, 0, 80, 12)
@@ -308,6 +388,7 @@ script = ExtResource("1_36f4q")
 top_level = true
 z_index = 3
 position = Vector2(93, 62)
+scale = Vector2(1e-05, 1e-05)
 collision_layer = 524289
 collision_mask = 524294
 script = ExtResource("1_fi5u7")
@@ -374,6 +455,12 @@ volume_db = 5.0
 [node name="Gameover" type="AudioStreamPlayer" parent="Printer/SFX"]
 stream = ExtResource("12_nmmsc")
 volume_db = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Printer"]
+autoplay = "start"
+libraries = {
+"": SubResource("AnimationLibrary_antbn")
+}
 
 [node name="Background" type="Node2D" parent="."]
 visible = false

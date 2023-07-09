@@ -13,6 +13,7 @@ scale = Vector2(0.33, 0.33)
 [node name="Emitter" type="CPUParticles2D" parent="."]
 z_index = 1
 z_as_relative = false
+emitting = false
 amount = 100
 lifetime = 600.0
 one_shot = true

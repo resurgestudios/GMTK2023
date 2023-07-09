@@ -120,11 +120,29 @@ func _physics_process(delta):
 	if move_time <= total_move_time:
 		target_position = start_position.lerp(end_position, move_time / total_move_time)
 		var vec: Vector2 = Vector2.ZERO
+		var space_state = get_world_2d().direct_space_state
+		# check for door stuffs
+		var dir: Vector2 = (end_position - position).normalized()
+		var dir2 = dir.orthogonal()
+		var begin1 = global_position + dir2 * 20
+		var begin2 = global_position - dir2 * 20
+		var query1 = PhysicsRayQueryParameters2D.create(begin1, begin1 + dir * 20)
+		var query2 = PhysicsRayQueryParameters2D.create(begin2, begin2 + dir * 20)
+		query1.collision_mask = 1<<2
+		query2.collision_mask = 1<<2
+		var result1 = space_state.intersect_ray(query1)
+		var result2 = space_state.intersect_ray(query2)
+		if result2 and not result1:
+			target_position = position + dir2 * delta * 80
+		if result1 and not result2:
+			target_position = position - dir2 * delta * 80
+				
 		if target_velocity.length() < 1:
 			vec = target_position - position
 			target_velocity = vec / delta
 		else:
 			vec = target_velocity * delta
+		
 		var collision: KinematicCollision2D = move_and_collide(vec)
 		if collision != null and not collision.get_collider().is_in_group("enemies") and not collision.get_collider().is_in_group("projectile"):
 			bounce(collision)
@@ -174,3 +192,6 @@ func die():
 		print("lmfao")
 		$SFX/Death.play()
 		dead = true
+		var scene = preload("res://Scenes/GameOver.tscn").instantiate()
+		get_tree().root.add_child(scene)
+		get_node("/root/Main").queue_free()
