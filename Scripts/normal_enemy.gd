@@ -26,9 +26,6 @@ func bounce(collision: KinematicCollision2D):
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
 	target_velocity = dir * length
 
-func _ready():
-	$Normal.show()
-	$Angry.hide()
 
 var timer: float = 0
 
@@ -44,18 +41,24 @@ func damage(delta: float):
 
 func _process(delta):
 	if following == null:
-		$Normal.show()
-		$Angry.hide()
 		shield = 0.0
 	health += regen * delta	
 	health = min(health, 100.0)
-	$HealthBar.value = health
-	$ShieldBar.value = shield
+	$Bars/HealthBar.value = health
+	$Bars/ShieldBar.value = shield
 
 func _physics_process(delta):
 	if not active:
 		return
+	if Global.map == null:
+		return
 	velocity = target_velocity
+	
+	if velocity.y < 0:
+		$AnimatedSprite2D.play("default")
+	else:
+		$AnimatedSprite2D.play("new_animation")
+		
 	timer -= delta
 	if timer <= 0:
 		if following != null:
@@ -100,8 +103,6 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("boss") and following == null:
-		$Normal.hide()
-		$Angry.show()
 		following = area.get_parent()
 		shield += 50.0
 		following.damage(50.0)

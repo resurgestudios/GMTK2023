@@ -61,8 +61,8 @@ func _physics_process(delta):
 func _process(delta):
 	health += regen * delta	
 	health = min(health, 100.0)
-	$HealthBar.value = health
-	$ShieldBar.value = shield
+	$Bars/HealthBar.value = health
+	$Bars/ShieldBar.value = shield
 
 func shoot_coffee():
 	var coffee_inst = load("res://Scenes/coffee.tscn").instantiate()

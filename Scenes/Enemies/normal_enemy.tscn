@@ -1,0 +1,194 @@
+[gd_scene load_steps=26 format=3 uid="uid://bwytb7btfr43o"]
+
+[ext_resource type="Script" path="res://scripts/normal_enemy.gd" id="1_qe5o8"]
+[ext_resource type="AudioStream" uid="uid://bsanmohrax64o" path="res://Sounds/human death.mp3" id="3_3px1y"]
+[ext_resource type="AudioStream" uid="uid://rjodgwlvb0sr" path="res://Sounds/human enraged.mp3" id="4_c8nvb"]
+[ext_resource type="AudioStream" uid="uid://cditdxuv64vs7" path="res://Sounds/Humanhit 1.mp3" id="5_m56eh"]
+[ext_resource type="AudioStream" uid="uid://2h3rfr8c5ws6" path="res://Sounds/human shoot.mp3" id="6_2nwfr"]
+[ext_resource type="AudioStream" uid="uid://ds12b73bet21" path="res://Sounds/Humanhit 2.mp3" id="6_jbkmm"]
+[ext_resource type="Texture2D" uid="uid://c5tkqn5rljbkc" path="res://Art/employee1_run_front-export.png" id="8_q0su8"]
+[ext_resource type="Texture2D" uid="uid://cxsc6vitcjchb" path="res://Art/employee_run_back-export.png" id="8_w3n23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhaqk"]
+size = Vector2(32, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqbhl"]
+size = Vector2(34.3333, 49.3333)
+
+[sub_resource type="Gradient" id="Gradient_rgbyg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jd5pj"]
+gradient = SubResource("Gradient_rgbyg")
+width = 128
+height = 16
+fill_from = Vector2(0.179487, 0.393162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgib0"]
+atlas = ExtResource("8_w3n23")
+region = Rect2(0, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agfuc"]
+atlas = ExtResource("8_w3n23")
+region = Rect2(32, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmy01"]
+atlas = ExtResource("8_w3n23")
+region = Rect2(64, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x7mj"]
+atlas = ExtResource("8_w3n23")
+region = Rect2(96, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxd50"]
+atlas = ExtResource("8_w3n23")
+region = Rect2(128, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uamrt"]
+atlas = ExtResource("8_w3n23")
+region = Rect2(160, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uf45"]
+atlas = ExtResource("8_q0su8")
+region = Rect2(0, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5i4d"]
+atlas = ExtResource("8_q0su8")
+region = Rect2(32, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuwu5"]
+atlas = ExtResource("8_q0su8")
+region = Rect2(64, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nntih"]
+atlas = ExtResource("8_q0su8")
+region = Rect2(96, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7d2"]
+atlas = ExtResource("8_q0su8")
+region = Rect2(128, 0, 32, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmyp6"]
+atlas = ExtResource("8_q0su8")
+region = Rect2(160, 0, 32, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lluhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgib0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agfuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmy01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x7mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxd50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uamrt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uf45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5i4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuwu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nntih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko7d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmyp6")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Normal_Enemy" type="CharacterBody2D" groups=["enemies"]]
+z_index = 3
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_qe5o8")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vhaqk")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
+scale = Vector2(1.2, 1.2)
+collision_layer = 515
+collision_mask = 515
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_cqbhl")
+
+[node name="Bars" type="Node2D" parent="."]
+position = Vector2(-2, -11)
+scale = Vector2(0.3, 0.3)
+
+[node name="ShieldBar" type="TextureProgressBar" parent="Bars"]
+z_index = 10
+offset_left = -64.0
+offset_top = -84.0
+offset_right = 64.0
+offset_bottom = -68.0
+size_flags_horizontal = 3
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_jd5pj")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="Bars"]
+z_index = 10
+offset_left = -64.0
+offset_top = -102.0
+offset_right = 64.0
+offset_bottom = -86.0
+size_flags_horizontal = 3
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_jd5pj")
+metadata/_edit_use_anchors_ = true
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_3px1y")
+
+[node name="Enraged" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_c8nvb")
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_m56eh")
+volume_db = 1.0
+
+[node name="Hit2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_jbkmm")
+volume_db = 1.0
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_2nwfr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lluhv")
+animation = &"new_animation"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

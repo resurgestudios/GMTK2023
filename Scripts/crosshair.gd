@@ -11,6 +11,6 @@ func _process(delta):
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var printer_pos: Vector2 = printer.global_position
 		var vector: Vector2 = mouse_pos - printer_pos
-		var length: float = min(vector.length(), printer.max_jump_dist)
+		var length: float = min(vector.length(), 120)
 		position = printer_pos + vector.normalized() * length
 		rotation += delta

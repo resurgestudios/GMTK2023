@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmq5sh1xe8xaf"]
 
 [ext_resource type="Script" path="res://Scripts/coffee.gd" id="1_6mf8e"]
-[ext_resource type="Texture2D" uid="uid://byyslygeauuuo" path="res://Art/RedSquare.png" id="1_tgmxn"]
+[ext_resource type="Texture2D" uid="uid://f4ajv08maw7h" path="res://Art/New Piskel.png" id="2_mx3bu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b38mw"]
 size = Vector2(100, 100)
 
 [node name="Coffee" type="Node2D"]
 z_index = 2
-scale = Vector2(0.33, 0.33)
 script = ExtResource("1_6mf8e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.380392, 0.235294, 0.0352941, 1)
-texture = ExtResource("1_tgmxn")
+scale = Vector2(2, 2)
+texture = ExtResource("2_mx3bu")
+region_enabled = true
+region_rect = Rect2(331.899, 91.4311, 24.5262, 24.6748)
 
 [node name="Area2D" type="Area2D" parent="."]
 

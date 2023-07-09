@@ -3,9 +3,9 @@
 [ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_efm2n"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_qskrj"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="4_x55jo"]
-[ext_resource type="PackedScene" uid="uid://cckjmj1yar0m5" path="res://Enemies/boss_enemy.tscn" id="5_ij48j"]
+[ext_resource type="PackedScene" uid="uid://cckjmj1yar0m5" path="res://Scenes/Enemies/boss_enemy.tscn" id="5_ij48j"]
 [ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="6_3wlhn"]
-[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="6_tuf5i"]
+[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Scenes/Enemies/normal_enemy.tscn" id="6_tuf5i"]
 [ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="7_0dfbw"]
 [ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="8_bu5ta"]
 
@@ -48,7 +48,6 @@ position = Vector2(300, 100)
 position = Vector2(236, 93)
 
 [node name="PlayerArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 script = ExtResource("4_x55jo")
 

@@ -71,6 +71,8 @@ func _process(delta: float):
 		if splash_timer <= 0.0:
 			splash_ink()
 			splash_timer = 1.0
+	if frozen:
+		$AnimatedSprite2D.play("shock")
 		
 func shoot_ink():
 	if Global.ink.total_volume() >= ink_cost:

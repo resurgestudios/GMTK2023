@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmtdcjabv04qd"]
+[gd_scene load_steps=3 format=3 uid="uid://c6g3gv1p7drde"]
+
+[ext_resource type="Texture2D" uid="uid://cvdkgdd33o4bx" path="res://Art/inksplat.png" id="1_7g5pk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xre3o"]
 radius = 100.0
@@ -18,6 +20,7 @@ speed_scale = 4.0
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
+texture = ExtResource("1_7g5pk")
 emission_shape = 1
 emission_sphere_radius = 15.0
 spread = 180.0
@@ -27,8 +30,7 @@ initial_velocity_max = 120.0
 damping_min = 100.0
 damping_max = 100.0
 angle_max = 360.0
-scale_amount_min = 30.0
-scale_amount_max = 40.0
+scale_amount_max = 2.0
 
 [node name="Area2D" type="Area2D" parent="." groups=["ink"]]
 collision_layer = 512

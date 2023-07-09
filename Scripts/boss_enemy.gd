@@ -31,8 +31,8 @@ func _process(delta):
 	health += regen * delta	
 	shield += max(0, health - 200.0)
 	health = min(health, 200.0)
-	$HealthBar.value = health
-	$ShieldBar.value = shield
+	$Bars/HealthBar.value = health
+	$Bars/ShieldBar.value = shield
 
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
@@ -47,6 +47,11 @@ func _physics_process(delta):
 		return
 	timer -= delta
 	velocity = target_velocity
+	if velocity.y > 0:
+		$AnimatedSprite2D.play("default")
+	else:
+		$AnimatedSprite2D.play("new_animation")
+		
 	if timer <= 0 and Global.map != null:
 		var cur: Vector2i = Global.closest_point(global_position)
 		var end: Vector2i = Global.closest_point(get_node("/root/Main/Printer").global_position)
