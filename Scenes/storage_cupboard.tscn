@@ -8,22 +8,24 @@ script/source = "extends Node2D
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group(\"printer\"):
+		$Sprite2D.region_rect = 
 		Global.ink.add(true, 150)
 		queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2uf6"]
-size = Vector2(26, 32)
+size = Vector2(32, 32)
 
 [node name="storage_cupboard" type="StaticBody2D"]
 position = Vector2(13, 16)
+collision_layer = 4
 script = SubResource("GDScript_ggp17")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-06, -1.90735e-06)
 texture = ExtResource("2_oe7rs")
 region_enabled = true
-region_rect = Rect2(160, 32, 32, 32)
+region_rect = Rect2(256, 32, 32, 32)
 
 [node name="Area2D" type="Area2D" parent="."]
 

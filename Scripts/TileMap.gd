@@ -29,7 +29,7 @@ func _physics_process(delta):
 			Global.root.get_node("Printer/Camera2D/AnimationPlayer").play_backwards("zoom_in")
 		for i in $Doors.get_children():
 			i.get_node("CollisionShape2D").set_deferred("disabled", true)
-			i.modulate = Color8(255, 112, 0)
+			i.get_node("AnimatedSprite2D").play("default")
 		
 		for i in get_tree().get_nodes_in_group("section"):
 			if i == self:
@@ -79,7 +79,7 @@ func _on_player_area_body_entered(body):
 			
 		for i in $Doors.get_children():
 			i.get_node("CollisionShape2D").set_deferred("disabled", false)
-			i.modulate = Color8(184, 15, 10)
+			i.get_node("AnimatedSprite2D").play_backwards("default")
 		
 		
 

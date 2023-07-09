@@ -379,7 +379,7 @@ texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
 script = ExtResource("1_vxup7")
-variance = 8.0
+variance = 0.0
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("7_hbgmt")]
 

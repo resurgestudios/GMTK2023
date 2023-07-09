@@ -1,12 +1,97 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6lyav2tqot1q"]
+[gd_scene load_steps=15 format=3 uid="uid://c6lyav2tqot1q"]
+
+[ext_resource type="Texture2D" uid="uid://blf0a1livfcjr" path="res://Art/side_doors.png" id="1_omes4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esdou"]
 size = Vector2(8, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_st7ue"]
+atlas = ExtResource("1_omes4")
+region = Rect2(0, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui6bl"]
+atlas = ExtResource("1_omes4")
+region = Rect2(16, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj0ek"]
+atlas = ExtResource("1_omes4")
+region = Rect2(32, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf43f"]
+atlas = ExtResource("1_omes4")
+region = Rect2(48, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqhqt"]
+atlas = ExtResource("1_omes4")
+region = Rect2(64, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxp3g"]
+atlas = ExtResource("1_omes4")
+region = Rect2(80, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67por"]
+atlas = ExtResource("1_omes4")
+region = Rect2(96, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw0p8"]
+atlas = ExtResource("1_omes4")
+region = Rect2(112, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5xym"]
+atlas = ExtResource("1_omes4")
+region = Rect2(128, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g83g"]
+atlas = ExtResource("1_omes4")
+region = Rect2(144, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p13v7"]
+atlas = ExtResource("1_omes4")
+region = Rect2(160, 0, 16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppy4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st7ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui6bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj0ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf43f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqhqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxp3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67por")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw0p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5xym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g83g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p13v7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="LeftDoor" type="StaticBody2D"]
-modulate = Color(1, 0.439216, 0, 1)
 position = Vector2(8, 96)
-scale = Vector2(1, 2)
 collision_layer = 4
 collision_mask = 0
 metadata/Dir = ""
@@ -15,5 +100,6 @@ metadata/Dir = ""
 shape = SubResource("RectangleShape2D_esdou")
 disabled = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 0)
+sprite_frames = SubResource("SpriteFrames_ppy4k")
