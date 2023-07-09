@@ -1,12 +1,15 @@
 extends Node2D
 
-@export var map_w : int = 15
-@export var map_h : int = 15
+@export var map_w : int = 3
+@export var map_h : int = 3
 @export var variance : float = 4.0 # lower means higher chance of smaller grid blocks
 const section_w : int = 12 # default width and height for 1x1 section
 const section_h : int = 12
 const tile_w : int = 16
 const tile_h : int = 16
+
+var section_count : int = 0
+var curr_section_count : int = 0
 
 var map = []
 var empty_map = []
@@ -20,26 +23,36 @@ class Section:
 	var h : int = 0
 	var doorways : Dictionary = {}
 
+signal update_cam_bounds
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	map_w = Global.map_w
+	map_h = Global.map_h
+	
 	for i in range(0, map_h):
 		map.append([])
 		for j in range(0, map_w):
 			map[map.size() - 1].append(0)
 			empty_map.append([i, j])
 	gen()
+	
 
 func gen():
-	# TODO make random picking from empty taken maps instead of left to right up to down
 	randomize()
 	while true:
 		#print(empty_map)
 		if empty_map.size() == 0:
 			break
 		
+		section_count += 1
 		var ind = empty_map[randi() % empty_map.size()]
 		create_section(ind[0], ind[1])
+		#update_cam_bounds.emit((section_w + (map_w - 1) * (section_w - 1)) * tile_w * scale.x, 
+		#			(section_h + (map_h - 1) * (section_h - 1)) * tile_h * scale.y)
+		
+	$TileMap.queue_free()
 
 
 func create_section(x, y):
@@ -132,16 +145,15 @@ func create_section(x, y):
 				possible_poses.append([tx, ty])
 		
 	
-	var weight : float = 1
+	var weight : float = 0.5
 	var weights = []
 	var last
 	for i in possible_sizes:
-		weights.append(weight)
-
 		if i[0] * i[1] != last:
 			weight *= variance
 
 		last = i[0] * i[1]
+		weights.append(weight)
 	
 	weighted_random(weights)
 	var ind = weighted_random(weights)
@@ -153,6 +165,12 @@ func create_section(x, y):
 	
 	var str : String = "res://Levels/" + str(size[0]) + "x" + str(size[1]) + "/"
 	var paths : = DirAccess.get_files_at("res://Levels/" + str(size[0]) + "x" + str(size[1]))
+	var new_paths : Array = []
+	for i in range(0, paths.size()):
+		if paths[i].ends_with(".tscn"):
+			new_paths.append(paths[i])
+	
+	paths = new_paths
 	
 	str += paths[randi() % paths.size()]
 	
@@ -199,29 +217,50 @@ func create_section(x, y):
 		if pos[0] == 0:
 			if i.x == 0:
 				a_coords = Vector2i(0, 0)
+				inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
+				for c in inst.get_node("Doors").get_children():
+					if c.get_meta("Dir") == "left":
+						c.queue_free()
 		
 		if pos[1] == 0:
 			if i.y == 0:
 				a_coords = Vector2i(0, 0)
+				inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
+				for c in inst.get_node("Doors").get_children():
+					if c.get_meta("Dir") == "up":
+						c.queue_free()
 		
-		if pos[0] * section_w + i.x == map_w * section_w - 1:
+		if pos[0] * section_w + i.x == map_w * section_w - size[0]:
 			a_coords = Vector2i(0, 0)
+			inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
+			for c in inst.get_node("Doors").get_children():
+				if c.get_meta("Dir") == "right":
+					c.queue_free()
+			
 		
-		if pos[1] * section_h + i.y == map_h * section_h - 1:
+		if pos[1] * section_h + i.y == map_h * section_h - size[1]:
 			a_coords = Vector2i(0, 0)
+			inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
+			for c in inst.get_node("Doors").get_children():
+				if c.get_meta("Dir") == "down":
+					c.queue_free()
 			
 		if pos[0] != 0:
 			i.x -= pos[0]
 			
 		if pos[1] != 0:
 			i.y -= pos[1]
-	
+		
+		
 		
 		$TileMap.set_cell(0, Vector2i(pos[0] * section_w + i.x, pos[1] * section_h + i.y), 0, a_coords)
-		#inst.set_cell(0, Vector2i(i.x, pos[1] * i.y), 0, a_coords)
 		
 	#inst.queue_free()
-	
+
+func next_stage():
+	Global.map_w += 1
+	Global.map_h += 1
+	get_tree().reload_current_scene()
 
 
 func weighted_random(weights):

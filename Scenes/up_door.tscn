@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsw4prf8np2ch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rira"]
+size = Vector2(32, 16)
+
+[node name="UpDoor" type="StaticBody2D"]
+modulate = Color(1, 0.439216, 0, 1)
+position = Vector2(96, 8)
+collision_layer = 4
+collision_mask = 0
+metadata/Dir = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4rira")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-16, -8, -16, 8, 16, 8, 16, -8)
