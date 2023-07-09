@@ -1,10 +1,7 @@
 extends Node2D
 
 var queue = [
-	{"is_ink": true, "volume": 200.0},
-	{"is_ink": false, "volume": 100.0},
-	{"is_ink": true, "volume": 50.0},
-	{"is_ink": false, "volume": 75.0}
+	{"is_ink": true, "volume": 500.0}
 ]
 
 var capacity: float = 1000
