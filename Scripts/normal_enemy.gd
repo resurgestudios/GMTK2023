@@ -114,8 +114,5 @@ func die():
 	Global.root.get_node("Splashes").add_child(blood_inst)
 	blood_inst.position = global_position
 	blood_inst.volume = 50.0
-<<<<<<< Updated upstream
 	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
-=======
->>>>>>> Stashed changes
 	queue_free()
