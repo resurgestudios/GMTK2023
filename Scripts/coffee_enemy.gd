@@ -52,5 +52,6 @@ func shoot_coffee():
 	get_tree().root.add_child(coffee_inst)
 	coffee_inst.position = position
 	
-	
+func die():
+	Global.score += 20
 

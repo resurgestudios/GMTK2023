@@ -6,11 +6,14 @@ var ink = null
 var score: int = 0
 var map: AStarGrid2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 #
 #		await get_tree().create_timer(1).timeout	
+
+
 
 var spawned = false
 @export var ink_draw_rate: float = 1
