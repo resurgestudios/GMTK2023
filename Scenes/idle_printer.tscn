@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://7c3we4la85n4"]
+[gd_scene load_steps=4 format=3 uid="uid://bfxmk1cnhxt3o"]
 
 [ext_resource type="Script" path="res://Scripts/idle_printer.gd" id="1_3wi1k"]
-[ext_resource type="Texture2D" uid="uid://datww3gx8xw8e" path="res://Art/InkSpreadSheet.png" id="1_d8wkq"]
+[ext_resource type="Texture2D" uid="uid://f4ajv08maw7h" path="res://Art/New Piskel.png" id="2_ohnqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2uf6"]
-size = Vector2(100, 100)
+size = Vector2(26, 32)
 
 [node name="idle_printer" type="Node2D"]
+position = Vector2(13, 16)
 script = ExtResource("1_3wi1k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-06, -1.90735e-06)
-scale = Vector2(1.25, 0.595238)
-texture = ExtResource("1_d8wkq")
+texture = ExtResource("2_ohnqv")
+region_enabled = true
+region_rect = Rect2(160, 32, 32, 32)
 
 [node name="Area2D" type="Area2D" parent="."]
 
