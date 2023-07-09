@@ -1,14 +1,16 @@
-[gd_scene load_steps=42 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=43 format=3 uid="uid://3xwx3j3copoq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
+[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="PackedScene" uid="uid://b4m2v1tm2gun6" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="AudioStream" uid="uid://bbjx1hkw6ytb0" path="res://Sounds/cheese-greater.mp3" id="10_wpi25"]
+[ext_resource type="Script" path="res://Scripts/crosshair.gd" id="10_3b070"]
+[ext_resource type="Texture2D" uid="uid://bwixig25j4dys" path="res://Scenes/crosshair.png" id="10_aj1av"]
 [ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
@@ -320,6 +322,11 @@ offset_right = 635.0
 offset_bottom = 1076.0
 text = "VERY GOOD BORIS"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_aj1av")
+script = ExtResource("10_3b070")
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_wpi25")
 autoplay = true
