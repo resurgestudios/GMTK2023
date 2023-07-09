@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d4dpb2fnbq4vo" path="res://Sounds/ink splash.mp3" id="5_p6m2f"]
 [ext_resource type="Texture2D" uid="uid://dbnxidfjj146k" path="res://Art/printer_jump..png" id="5_xnxyt"]
 [ext_resource type="AudioStream" uid="uid://dnp780ln4ohd1" path="res://Sounds/printer move.mp3" id="6_f5kj7"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
+[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
 [ext_resource type="AudioStream" uid="uid://hq3uyld27ysv" path="res://Sounds/printer hit 1.mp3" id="8_k8b7p"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="AudioStream" uid="uid://cv621hnvubs1p" path="res://Sounds/printer hit 2.mp3" id="9_fw1sx"]
@@ -23,7 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/MainTheme.gd" id="14_wuxqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g4l3"]
-size = Vector2(26, 32)
+size = Vector2(26, 20)
 
 [sub_resource type="Animation" id="Animation_oixsq"]
 resource_name = "zoom_in"
@@ -235,7 +235,7 @@ z_index = 2
 texture = ExtResource("2_aoy67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Printer"]
-position = Vector2(0, 8)
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_0g4l3")
 
 [node name="Camera2D" type="Camera2D" parent="Printer"]
@@ -345,7 +345,7 @@ sprite_frames = SubResource("SpriteFrames_5233t")
 frame_progress = 0.471209
 
 [node name="InkBarBackground" type="Sprite2D" parent="CanvasLayer/BigInkBar"]
-position = Vector2(60, 520)
+position = Vector2(61, 403)
 texture = ExtResource("10_7gwhk")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
