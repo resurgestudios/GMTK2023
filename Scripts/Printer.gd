@@ -75,7 +75,7 @@ func shoot_ink():
 		Global.ink.retrieve(ink_cost)
 		
 func splash_ink():
-	if Global.ink.total_volume() >= ink_cost*10:
+	if Global.ink.total_volume() >= ink_cost*20:
 		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
 		ink_inst.position = position
 		Global.root.get_node("Splashes").add_child(ink_inst)
@@ -84,7 +84,7 @@ func splash_ink():
 			ink_inst.get_node("Emitter").color = Color(0, 0, 0)
 		else:
 			ink_inst.get_node("Emitter").color = Color(1, 0, 0)
-		Global.ink.retrieve(ink_cost*10)
+		Global.ink.retrieve(ink_cost*20)
 		
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
