@@ -1,14 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://3xwx3j3copoq"]
+[gd_scene load_steps=45 format=3 uid="uid://3xwx3j3copoq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
 [ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
+[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="PackedScene" uid="uid://b4m2v1tm2gun6" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="10_3b070"]
+[ext_resource type="Texture2D" uid="uid://dkse1ngv5ln8s" path="res://Art/bumbu.png" id="10_7gwhk"]
 [ext_resource type="Texture2D" uid="uid://bwixig25j4dys" path="res://Scenes/crosshair.png" id="10_aj1av"]
 [ext_resource type="AudioStream" uid="uid://bbjx1hkw6ytb0" path="res://Sounds/cheese-greater.mp3" id="10_wpi25"]
 [ext_resource type="Texture2D" uid="uid://de764pmuxfhtf" path="res://Art/new animaton.png" id="11_uid8i"]
@@ -306,21 +307,29 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InkBar" type="Node2D" parent="CanvasLayer"]
-position = Vector2(50, 1030)
-script = ExtResource("9_8uwy2")
-
-[node name="AnimatedSprite2D" parent="CanvasLayer/InkBar" instance=ExtResource("9_vg42r")]
-position = Vector2(2.08165e-12, 2.08165e-12)
-sprite_frames = SubResource("SpriteFrames_5233t")
-frame_progress = 0.471209
-
 [node name="Score" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 116.0
 offset_top = 1036.0
 offset_right = 635.0
 offset_bottom = 1076.0
 text = "VERY GOOD BORIS"
+
+[node name="BigInkBar" type="Node2D" parent="CanvasLayer"]
+position = Vector2(30, 20)
+
+[node name="InkBar" type="Node2D" parent="CanvasLayer/BigInkBar"]
+z_index = 12
+position = Vector2(60, 1020)
+script = ExtResource("9_8uwy2")
+
+[node name="AnimatedSprite2D" parent="CanvasLayer/BigInkBar/InkBar" instance=ExtResource("9_vg42r")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+sprite_frames = SubResource("SpriteFrames_5233t")
+frame_progress = 0.471209
+
+[node name="InkBarBackground" type="Sprite2D" parent="CanvasLayer/BigInkBar"]
+position = Vector2(60, 520)
+texture = ExtResource("10_7gwhk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
