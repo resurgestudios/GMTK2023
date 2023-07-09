@@ -38,6 +38,10 @@ func _physics_process(delta):
 				continue
 			if i.cleared:
 				i.get_node("TMAnimationPlayer").play("Fade")
+		
+#		for i in get_used_cells(0):
+#			if get_cell_atlas_coords(0, i) in [Vector2i(20, 9), Vector2i(21, 9)]:
+#				set_cell(0, i, 0, Vector2i(22, 9))
 
 
 
@@ -59,7 +63,7 @@ func _on_player_area_body_entered(body):
 	p_entered = true
 	z_index = -5
 	if !cleared:
-		
+#		Global.root.get_node("Printer").position += "Area2D"
 		if $Enemies.get_child_count() > 0:
 			Global.root.get_node("Printer/Camera2D/AnimationPlayer").play("zoom_in")
 		for i in $Enemies.get_children():

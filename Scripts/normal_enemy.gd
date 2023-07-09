@@ -111,7 +111,11 @@ func die():
 	# TODO play death animation
 	Global.score += 20
 	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
+	Global.root.get_node("Splashes").add_child(blood_inst)
 	blood_inst.position = global_position
 	blood_inst.volume = 50.0
+<<<<<<< Updated upstream
 	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
+=======
+>>>>>>> Stashed changes
 	queue_free()
