@@ -29,4 +29,6 @@ func _physics_process(delta):
 	if move_and_slide():
 		bounce_with_clamp(200, 2000)
 
+func die():
+	Global.score += 50
 

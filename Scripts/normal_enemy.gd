@@ -109,6 +109,7 @@ func _on_area_2d_area_entered(area):
 
 func die():
 	# TODO play death animation
+	Global.score += 20
 	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
 	blood_inst.position = global_position
 	blood_inst.volume = 50.0

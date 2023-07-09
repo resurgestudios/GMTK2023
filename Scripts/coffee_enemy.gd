@@ -58,5 +58,6 @@ func shoot_coffee():
 	Global.root.get_node("Splashes").add_child(coffee_inst)
 	coffee_inst.global_position = global_position
 	
-	
+func die():
+	Global.score += 20
 

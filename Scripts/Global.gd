@@ -8,12 +8,15 @@ var map: AStarGrid2D
 var map_w : int = 1
 var map_h : int = 1
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RenderingServer.set_default_clear_color(Color(0, 0, 0))
 	pass
 #
 #		await get_tree().create_timer(1).timeout	
+
+
 
 var spawned = false
 @export var ink_draw_rate: float = 1

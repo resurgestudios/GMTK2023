@@ -56,6 +56,7 @@ func redraw():
 		inst.apply_scale(Vector2(1, float(queue[i].volume) / 100.0))
 		offsetY += queue[i].volume
 		self.add_child(inst)
+	# can cause errors, but since you die its calm
 	flow.position.y = -offsetY - 7
 	flow.play("default")
 	
