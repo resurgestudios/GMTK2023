@@ -23,14 +23,14 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(655363, 458752, 12, 720899, 458752, 13, 786435, 458752, 14, 655368, 589824, 12, 720904, 589824, 13, 786440, 589824, 14)
+layer_1/tile_data = PackedInt32Array(655363, 458752, 12, 720899, 458752, 13, 786435, 458752, 14, 655368, 589824, 12, 720904, 589824, 13, 786440, 589824, 14, 262153, 327680, 6, 327689, 327680, 7, 131074, 327680, 6, 196610, 327680, 7, 1179650, 458752, 9, 1245186, 458752, 10, 1310729, 917504, 13, 1376265, 917504, 14, 1310730, 983040, 13, 1376266, 983040, 14, 131081, 851968, 2, 196617, 851968, 3, 131082, 917504, 2, 196618, 917504, 3)
 layer_2/name = "decorations2"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 10
-layer_2/tile_data = PackedInt32Array()
+layer_2/tile_data = PackedInt32Array(9, 524288, 5, 65545, 524288, 6, 10, 589824, 5, 65546, 589824, 6, 1114114, 917504, 5, 1179650, 917504, 6)
 script = ExtResource("2_3j4ae")
 
 [node name="Enemies" type="Node2D" parent="."]

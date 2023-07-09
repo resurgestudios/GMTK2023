@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpjs8kpdu0t4r"]
+[gd_scene load_steps=11 format=3 uid="uid://dpjs8kpdu0t4r"]
 
 [ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_jx5qu"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_t6gni"]
 [ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="3_5ahbn"]
+[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="3_wwerb"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="4_7ebiw"]
 [ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="4_q633e"]
-[ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="6_nxk87"]
+[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="6_nxk87"]
+[ext_resource type="PackedScene" uid="uid://b0mu8tix4msn6" path="res://Scenes/storage_cupboard.tscn" id="8_d17ie"]
+[ext_resource type="PackedScene" uid="uid://bfxmk1cnhxt3o" path="res://Scenes/idle_printer.tscn" id="9_vhimw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb0tx"]
 size = Vector2(304, 480)
@@ -21,7 +24,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(1245190, 917504, 5, 1310726, 917504, 6, 851978, 917504, 5, 917514, 917504, 6, 327696, 917504, 5, 393232, 917504, 6, 262148, 917504, 5, 327684, 917504, 6, 196620, 917504, 5, 262156, 917504, 6, 786435, 917504, 5, 851971, 917504, 6, 1376273, 917504, 5, 1441809, 917504, 6, 1441801, 917504, 5, 1507337, 917504, 6, 1703940, 917504, 5, 1769476, 917504, 6, 1835026, 917504, 5, 1900562, 917504, 6, 1966092, 917504, 5, 2031628, 917504, 6)
 layer_2/name = "decorations2"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
@@ -32,6 +35,9 @@ layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_t6gni")
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Normal_Enemy" parent="Enemies" instance=ExtResource("3_wwerb")]
+position = Vector2(199, 343)
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2(-19, -106)
@@ -77,6 +83,7 @@ position = Vector2(291, 642)
 metadata/Dir = "down"
 
 [node name="PlayerArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 script = ExtResource("4_7ebiw")
 
@@ -85,6 +92,24 @@ position = Vector2(184, 272)
 shape = SubResource("RectangleShape2D_vb0tx")
 
 [node name="TMAnimationPlayer" parent="." instance=ExtResource("6_nxk87")]
+
+[node name="storage_cupboard" parent="." instance=ExtResource("8_d17ie")]
+position = Vector2(138, 108)
+
+[node name="storage_cupboard2" parent="." instance=ExtResource("8_d17ie")]
+position = Vector2(128, 449)
+
+[node name="storage_cupboard3" parent="." instance=ExtResource("8_d17ie")]
+position = Vector2(250, 269)
+
+[node name="idle_printer" parent="." instance=ExtResource("9_vhimw")]
+position = Vector2(248, 422)
+
+[node name="idle_printer2" parent="." instance=ExtResource("9_vhimw")]
+position = Vector2(118, 197)
+
+[node name="idle_printer3" parent="." instance=ExtResource("9_vhimw")]
+position = Vector2(266, 175)
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
 [connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]

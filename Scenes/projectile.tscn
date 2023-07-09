@@ -11,7 +11,7 @@ size = Vector2(2.5, 2.66667)
 
 [node name="Projectile" type="CharacterBody2D" groups=["projectile"]]
 z_index = 4
-scale = Vector2(6, 6)
+scale = Vector2(4, 4)
 collision_layer = 524288
 script = ExtResource("1_w1l6a")
 
