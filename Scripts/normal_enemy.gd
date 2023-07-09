@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-var proj_speed: float = 500.0
-var shoot_range: float = 400.0
+var proj_speed: float = 200.0
+var shoot_range: float = 250.0
 var health: float = 100.0
 var regen: float = 2.0
 var shield: float = 0.0
-const speed: float = 200
+const speed: float = 70
 var direction: float = Global.rng.randf_range(0, 2 * PI)
 var target_velocity: Vector2
 var updated: bool = false
@@ -18,8 +18,8 @@ func activate():
 
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
-	var lengthA: float = max(200, target_velocity.length())
-	var lengthB: float = max(200, collision.get_collider_velocity().length())
+	var lengthA: float = max(70, target_velocity.length())
+	var lengthB: float = max(70, collision.get_collider_velocity().length())
 	var length: float = sqrt(lengthA * lengthB)
 	if not collision.get_collider().is_in_group("printer"):
 		length = min(length, speed)
@@ -111,7 +111,6 @@ func die():
 	# TODO play death animation
 	Global.score += 20
 	var blood_inst = load("res://Scenes/blood.tscn").instantiate()
-	Global.root.get_node("Splashes").add_child(blood_inst)
 	blood_inst.position = global_position
 	blood_inst.volume = 50.0
 	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)

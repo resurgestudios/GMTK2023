@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var ink_speed: float = 800
+@export var ink_speed: float = 300
 @export var ink_cost: float = 5
-var max_jump_dist: float = 300
+var max_jump_dist: float = 120
 var frozen: bool = false
 var move_time: float = 0.0
 var total_move_time: float = 0.5
@@ -38,7 +38,7 @@ func _process(delta: float):
 		if Input.is_action_just_pressed("Jump") and not frozen:
 			$AnimatedSprite2D.play("jump")
 			target_velocity = Vector2.ZERO
-			start_position = position
+			start_position = global_position
 			end_position = get_global_mouse_position()
 			var vec: Vector2 = (end_position - start_position)
 			var magnitude: float = min(max_jump_dist, vec.length())
@@ -60,11 +60,11 @@ func shoot_ink():
 	if Global.ink.total_volume() >= ink_cost:
 		var ink_inst = load("res://Scenes/ink.tscn").instantiate()
 		Global.root.get_node("Splashes").add_child(ink_inst)
-		var angle = position.angle_to_point(get_global_mouse_position())
+		var angle = global_position.angle_to_point(get_global_mouse_position())
 		angle += Global.rng.randf_range(-0.1, 0.1)
 		ink_inst.velocity.y = ink_speed * sin(angle)
 		ink_inst.velocity.x = ink_speed * cos(angle)
-		ink_inst.position = position
+		ink_inst.global_position = global_position
 		ink_inst.rotation = angle
 		if Global.ink.queue[0].is_ink:
 			ink_inst.get_node("Black").show()
@@ -77,7 +77,7 @@ func shoot_ink():
 func splash_ink():
 	if Global.ink.total_volume() >= ink_cost*20:
 		var ink_inst = load("res://Scenes/splash.tscn").instantiate()
-		ink_inst.position = position
+		ink_inst.global_position = global_position
 		Global.root.get_node("Splashes").add_child(ink_inst)
 		ink_inst.get_node("Emitter").emitting = true
 		if Global.ink.queue[0].is_ink:
@@ -90,7 +90,7 @@ func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
 	var lengthA: float = max(200, target_velocity.length())
 	var lengthB: float = max(200, collision.get_collider_velocity().length())
-	var length: float = sqrt(lengthA * lengthB)
+	var length: float = min(20, sqrt(lengthA * lengthB))
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
 	target_velocity = dir * length
 
@@ -112,7 +112,7 @@ func _physics_process(delta):
 	if frozen_timer <= 0.0:
 		frozen = false
 	
-	$Camera2D.offset = (get_global_mouse_position() - position) * 0.15
+	$Camera2D.offset = (get_global_mouse_position() - global_position) * 0.15
 		
 
 func touch_coffee():

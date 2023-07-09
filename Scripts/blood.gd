@@ -5,7 +5,7 @@ var timer = rng.randf_range(6.0, 10.0)
 var volume: float = 0.0
 
 func _process(delta):
-	scale = Vector2(volume / 100.0, volume / 100.0)
+	scale = Vector2(volume / 100.0, volume / 100.0) / 3.0
 
 func _physics_process(delta):
 	timer -= delta

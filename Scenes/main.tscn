@@ -1,22 +1,13 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=45 format=3 uid="uid://3xwx3j3copoq"]
-=======
-[gd_scene load_steps=36 format=3 uid="uid://3xwx3j3copoq"]
->>>>>>> Stashed changes
+[gd_scene load_steps=40 format=3 uid="uid://3xwx3j3copoq"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_36f4q"]
 [ext_resource type="Script" path="res://Scripts/Printer.gd" id="1_fi5u7"]
 [ext_resource type="Script" path="res://Scripts/MapManager.gd" id="1_vxup7"]
 [ext_resource type="Texture2D" uid="uid://bato50kxiissq" path="res://Art/icon.svg" id="2_aoy67"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://d4lgabmkn38wh" path="res://Art/slime_jump.png" id="4_g5yrc"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
-=======
 [ext_resource type="Texture2D" uid="uid://dbnxidfjj146k" path="res://Art/printer_jump..png" id="5_xnxyt"]
 [ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
->>>>>>> Stashed changes
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
-[ext_resource type="PackedScene" uid="uid://b4m2v1tm2gun6" path="res://Scenes/flow.tscn" id="9_vg42r"]
+[ext_resource type="PackedScene" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="10_3b070"]
 [ext_resource type="Texture2D" uid="uid://dkse1ngv5ln8s" path="res://Art/bumbu.png" id="10_7gwhk"]
 [ext_resource type="Texture2D" uid="uid://bwixig25j4dys" path="res://Scenes/crosshair.png" id="10_aj1av"]
@@ -231,7 +222,7 @@ z_index = 2
 texture = ExtResource("2_aoy67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Printer"]
-position = Vector2(-32, -14)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_0g4l3")
 
 [node name="Camera2D" type="Camera2D" parent="Printer"]
@@ -243,7 +234,6 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Printer"]
-position = Vector2(-32, -22)
 sprite_frames = SubResource("SpriteFrames_26nms")
 animation = &"jump"
 
@@ -255,6 +245,7 @@ animation = &"jump"
 
 [node name="Area2D" type="Area2D" parent="Printer"]
 visible = false
+position = Vector2(32, 22)
 collision_layer = 524289
 collision_mask = 524289
 
@@ -275,7 +266,7 @@ texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
 script = ExtResource("1_vxup7")
-variance = 0.0
+variance = 8.0
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("7_hbgmt")]
 
@@ -307,9 +298,9 @@ frame_progress = 0.471209
 position = Vector2(60, 520)
 texture = ExtResource("10_7gwhk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Crosshair" type="Sprite2D" parent="."]
 z_index = 10
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.04, 0.04)
 texture = ExtResource("10_aj1av")
 script = ExtResource("10_3b070")
 

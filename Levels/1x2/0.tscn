@@ -36,7 +36,6 @@ script = ExtResource("2_3j4ae")
 
 [node name="Coffee_Enemy" parent="Enemies" instance=ExtResource("7_shoiy")]
 position = Vector2(107, 106)
-scale = Vector2(0.1, 0.1)
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2(7.62939e-06, 7.62939e-06)

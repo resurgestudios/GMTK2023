@@ -56,11 +56,9 @@ metadata/Dir = "right"
 
 [node name="Normal_Enemy" parent="Enemies" instance=ExtResource("3_a8odo")]
 position = Vector2(131, 156)
-scale = Vector2(0.155, 0.155)
 
 [node name="Coffee_Enemy" parent="Enemies" instance=ExtResource("8_xapim")]
 position = Vector2(106, 95)
-scale = Vector2(0.1, 0.1)
 
 [node name="PlayerArea" type="Area2D" parent="."]
 collision_layer = 0

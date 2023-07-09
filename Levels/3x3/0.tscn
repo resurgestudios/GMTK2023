@@ -39,10 +39,10 @@ script = ExtResource("2_qskrj")
 position = Vector2(160, 94)
 
 [node name="Normal_Enemy" parent="Enemies" instance=ExtResource("6_tuf5i")]
-position = Vector2(221, 126)
+position = Vector2(350, 150)
 
 [node name="Normal_Enemy2" parent="Enemies" instance=ExtResource("6_tuf5i")]
-position = Vector2(221, 126)
+position = Vector2(300, 100)
 
 [node name="Normal_Enemy3" parent="Enemies" instance=ExtResource("6_tuf5i")]
 position = Vector2(236, 93)
