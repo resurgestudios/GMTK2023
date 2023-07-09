@@ -216,22 +216,23 @@ func create_section(x, y):
 		#edges of map no doors
 		if pos[0] == 0:
 			if i.x == 0:
-				a_coords = Vector2i(0, 0)
+				a_coords = Vector2i(21, 9)
 				inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
 				for c in inst.get_node("Doors").get_children():
 					if c.get_meta("Dir") == "left":
 						c.queue_free()
 		
 		if pos[1] == 0:
-			if i.y == 0:
+			if i.y == 0 && i.x != 0 && i.x != section_w - 1:
 				a_coords = Vector2i(0, 0)
 				inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
+				inst.set_cell(0, Vector2i(i.x, i.y + 1), 0, Vector2i(0, 1))
 				for c in inst.get_node("Doors").get_children():
 					if c.get_meta("Dir") == "up":
 						c.queue_free()
 		
 		if pos[0] * section_w + i.x == map_w * section_w - size[0]:
-			a_coords = Vector2i(0, 0)
+			a_coords = Vector2i(20, 9)
 			inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
 			for c in inst.get_node("Doors").get_children():
 				if c.get_meta("Dir") == "right":
@@ -239,7 +240,7 @@ func create_section(x, y):
 			
 		
 		if pos[1] * section_h + i.y == map_h * section_h - size[1]:
-			a_coords = Vector2i(0, 0)
+			a_coords = Vector2i(20, 11)
 			inst.set_cell(0, Vector2i(i.x, i.y), 0, a_coords)
 			for c in inst.get_node("Doors").get_children():
 				if c.get_meta("Dir") == "down":

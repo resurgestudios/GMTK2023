@@ -4,7 +4,7 @@ extends CharacterBody2D
 var health: float = 200.0
 var regen: float = 20.0
 var shield: float = 200.0
-const speed: float = 50
+const speed: float = 20.0
 var target_velocity: Vector2
 
 var active : bool = false
