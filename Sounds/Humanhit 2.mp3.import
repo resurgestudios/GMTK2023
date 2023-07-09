@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds12b73bet21"
+path="res://.godot/imported/Humanhit 2.mp3-f65c6dde2b917130170ded71a8745a1e.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Humanhit 2.mp3"
+dest_files=["res://.godot/imported/Humanhit 2.mp3-f65c6dde2b917130170ded71a8745a1e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

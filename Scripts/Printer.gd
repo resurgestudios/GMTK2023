@@ -13,6 +13,7 @@ var target_position: Vector2 = Vector2.ZERO
 var frozen_timer: float = 3.0
 var ink_timer: float = 0.0
 var splash_timer: float = 0.0
+var dead: bool = false
 
 func _ready():
 	start_position = position
@@ -37,6 +38,7 @@ func _process(delta: float):
 		$AnimatedSprite2D.stop() # change this to play idle animation
 		if Input.is_action_just_pressed("Jump") and not frozen:
 			$AnimatedSprite2D.play("jump")
+			$SFX/Move.play()
 			target_velocity = Vector2.ZERO
 			start_position = global_position
 			end_position = get_global_mouse_position()
@@ -73,6 +75,7 @@ func shoot_ink():
 			ink_inst.get_node("Red").show()
 			ink_inst.get_node("Black").hide()
 		Global.ink.retrieve(ink_cost)
+		$SFX/ShootPaper.play()
 		
 func splash_ink():
 	if Global.ink.total_volume() >= ink_cost*20:
@@ -85,6 +88,7 @@ func splash_ink():
 		else:
 			ink_inst.get_node("Emitter").color = Color(1, 0, 0)
 		Global.ink.retrieve(ink_cost*20)
+		$SFX/InkSplash.play()
 		
 func bounce(collision: KinematicCollision2D):
 	var norm: Vector2 = collision.get_normal()
@@ -93,6 +97,7 @@ func bounce(collision: KinematicCollision2D):
 	var length: float = min(20, sqrt(lengthA * lengthB))
 	var dir: Vector2 = target_velocity.bounce(norm).normalized()
 	target_velocity = dir * length
+	$SFX/Bounce.play()
 
 func _physics_process(delta):
 	move_time += delta
@@ -111,6 +116,8 @@ func _physics_process(delta):
 		frozen_timer -= delta
 	if frozen_timer <= 0.0:
 		frozen = false
+	if Global.ink.total_volume() <= 0.0:
+		die()
 	
 	$Camera2D.offset = (get_global_mouse_position() - global_position) * 0.15
 		
@@ -119,6 +126,7 @@ func touch_coffee():
 	Global.ink.retrieve(100)
 	frozen = true
 	frozen_timer = 3.0
+	$SFX/Stunned.play()
 
 	
 	
@@ -134,4 +142,13 @@ func _on_map_manager_update_cam_bounds(x, y):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("projectile"):
 		Global.ink.retrieve(50)
-		# damage effect/sound?
+		if Global.rng.randi_range(0, 1):
+			$SFX/Damaged1.play()
+		else:
+			$SFX/Damaged2.play()
+
+func die():
+	if dead == false:
+		print("lmfao")
+		$SFX/Death.play()
+		dead = true

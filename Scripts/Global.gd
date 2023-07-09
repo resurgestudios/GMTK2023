@@ -7,6 +7,7 @@ var score: int = 0
 var map: AStarGrid2D
 var map_w : int = 1
 var map_h : int = 1
+var dead: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,8 +23,16 @@ var spawned = false
 @export var ink_draw_rate: float = 1
 @export var ink_draw_interval: float = 0.2
 var timer: float = ink_draw_interval
+var gameover: bool = false
 
 func _process(delta):
+	if dead == true:
+		game_over_time -= delta
+		if game_over_time <= 0.0 and gameover == false:
+			root.get_node("Printer/SFX/Gameover").play()
+			gameover = true
+			end_game()
+			
 	if not spawned:
 		init_navigation()
 		spawned = true
@@ -75,9 +84,14 @@ func spawn_coffee_enemies():
 		coffee_enemy_inst.position = Vector2(x, y)
 		get_tree().root.add_child(coffee_enemy_inst)
 		
+var game_over_time:float = 0.0
+		
+
 func die():
-	print("you died, your score was ", score)
-	pass
+	if dead == false:
+		print("you died, your score was ", score)
+		game_over_time = 3.5
+		dead = true
 
 var cell_size: Vector2 = Vector2(64, 64)
 
@@ -94,3 +108,6 @@ func init_navigation():
 	map.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	map.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
 	map.update()
+
+func end_game():
+	pass

@@ -37,6 +37,10 @@ func damage(delta: float):
 	shield -= shield_delta
 	delta -= shield_delta
 	health -= delta
+	if Global.rng.randi_range(0, 1):
+		$SFX/Hit.play()
+	else:
+		$SFX/Hit2.play()
 
 func _process(delta):
 	if following == null:
@@ -68,6 +72,7 @@ func _physics_process(delta):
 		var player_pos: Vector2 = get_node("/root/Main/Printer").global_position
 		if following != null or ((global_position - player_pos).length() <= shoot_range and Global.rng.randi_range(0, 2) == 0):
 			var proj_inst = load("res://Scenes/projectile.tscn").instantiate()
+			$SFX/Shoot.play()
 			get_tree().root.add_child(proj_inst)
 			var angle = global_position.angle_to_point(player_pos)
 			proj_inst.velocity.y = proj_speed * sin(angle)
@@ -100,6 +105,7 @@ func _on_area_2d_area_entered(area):
 		following = area.get_parent()
 		shield += 50.0
 		following.damage(50.0)
+		$SFX/Enraged.play()
 	if area.is_in_group("paper"):
 		damage(40.0)
 		if health <= 0.0:
@@ -114,4 +120,5 @@ func die():
 	blood_inst.position = global_position
 	blood_inst.volume = 50.0
 	Global.root.get_node("Splashes").call_deferred("add_child", blood_inst)
+	$SFX/Death.play()
 	queue_free()

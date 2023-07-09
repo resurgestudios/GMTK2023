@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsanmohrax64o"
+path="res://.godot/imported/human death.mp3-eefb373f95a8624bd4a23b889b3cffa3.mp3str"
+
+[deps]
+
+source_file="res://Sounds/human death.mp3"
+dest_files=["res://.godot/imported/human death.mp3-eefb373f95a8624bd4a23b889b3cffa3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

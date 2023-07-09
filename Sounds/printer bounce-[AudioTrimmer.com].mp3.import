@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxevjgnprkh24"
+path="res://.godot/imported/printer bounce-[AudioTrimmer.com].mp3-fc219b71fc10eacf43daf5d0db57add5.mp3str"
+
+[deps]
+
+source_file="res://Sounds/printer bounce-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/printer bounce-[AudioTrimmer.com].mp3-fc219b71fc10eacf43daf5d0db57add5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

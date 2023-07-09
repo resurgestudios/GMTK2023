@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnp780ln4ohd1"
+path="res://.godot/imported/printer move.mp3-25a524a6b29ef598c22cc5168d8ca431.mp3str"
+
+[deps]
+
+source_file="res://Sounds/printer move.mp3"
+dest_files=["res://.godot/imported/printer move.mp3-25a524a6b29ef598c22cc5168d8ca431.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

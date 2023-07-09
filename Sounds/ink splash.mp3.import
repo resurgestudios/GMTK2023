@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4dpb2fnbq4vo"
+path="res://.godot/imported/ink splash.mp3-59c5d5552402afb9301122a6c841470a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/ink splash.mp3"
+dest_files=["res://.godot/imported/ink splash.mp3-59c5d5552402afb9301122a6c841470a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
