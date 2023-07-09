@@ -1,18 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://f56538lwjocp"]
+[gd_scene load_steps=9 format=3 uid="uid://coqkd4dyol7g8"]
 
-[ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_bcbh2"]
-[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_rddg1"]
-[ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="3_7qi82"]
-[ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_bgd7d"]
-[ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="5_xasyb"]
-[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="7_ac5ao"]
-[ext_resource type="PackedScene" uid="uid://ch1r6wfqrobw7" path="res://Enemies/coffee_enemy.tscn" id="8_xapim"]
+[ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_ix365"]
+[ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_b2rfh"]
+[ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="3_ijhu7"]
+[ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_ijdpi"]
+[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="5_11dlp"]
+[ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="7_dcgfu"]
+[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="8_r1psg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kfyv"]
 size = Vector2(128, 128)
 
 [node name="TileMap3" type="TileMap" groups=["section"]]
-tile_set = ExtResource("1_bcbh2")
+tile_set = ExtResource("1_ix365")
 format = 2
 layer_0/name = "main"
 layer_0/tile_data = PackedInt32Array(1, 0, 0, 65537, 0, 1, 262145, 1114112, 9, 327681, 1179648, 9, 393217, 1114112, 9, 458753, 1179648, 9, 524289, 1114112, 9, 589825, 1179648, 9, 655361, 1114112, 9, 65538, 0, 1, 262146, 1179648, 9, 327682, 1114112, 9, 458754, 1114112, 9, 524290, 1179648, 9, 589826, 1114112, 9, 655362, 1179648, 9, 65539, 0, 1, 131075, 1114112, 9, 196611, 1179648, 9, 262147, 1114112, 9, 327683, 1179648, 9, 393219, 1114112, 9, 458755, 1179648, 9, 524291, 1114112, 9, 589827, 1179648, 9, 655363, 1114112, 9, 131076, 1179648, 9, 196612, 1114112, 9, 262148, 1179648, 9, 327684, 1114112, 9, 393220, 1179648, 9, 458756, 1114112, 9, 524292, 1179648, 9, 589828, 1114112, 9, 655364, 1179648, 9, 131077, 1114112, 9, 196613, 1179648, 9, 262149, 1114112, 9, 327685, 1179648, 9, 393221, 1114112, 9, 458757, 1179648, 9, 524293, 1114112, 9, 589829, 1179648, 9, 655365, 1114112, 9, 131078, 1179648, 9, 196614, 1114112, 9, 262150, 1179648, 9, 327686, 1114112, 9, 393222, 1179648, 9, 458758, 1114112, 9, 524294, 1179648, 9, 589830, 1114112, 9, 655366, 1179648, 9, 131079, 1114112, 9, 196615, 1179648, 9, 262151, 1114112, 9, 327687, 1179648, 9, 393223, 1114112, 9, 458759, 1179648, 9, 524295, 1114112, 9, 589831, 1179648, 9, 655367, 1114112, 9, 8, 0, 0, 131080, 1179648, 9, 196616, 1114112, 9, 262152, 1179648, 9, 327688, 1114112, 9, 393224, 1179648, 9, 458760, 1114112, 9, 524296, 1179648, 9, 589832, 1114112, 9, 655368, 1179648, 9, 589824, 1376256, 9, 655360, 1376256, 9, 3, 0, 0, 2, 0, 0, 655370, 1179648, 9, 589834, 1114112, 9, 524298, 1179648, 9, 458762, 1114112, 9, 393226, 1179648, 9, 327690, 1114112, 9, 262154, 1179648, 9, 196618, 1114112, 9, 65546, 0, 1, 10, 0, 0, 9, 0, 0, 655369, 1114112, 9, 65545, 0, 1, 196617, 1179648, 9, 262153, 1114112, 9, 327689, 1179648, 9, 393225, 1114112, 9, 458761, 1179648, 9, 524297, 1114112, 9, 589833, 1179648, 9, 65544, 0, 1, 131081, 1114112, 9, 131082, 1179648, 9, 720907, 1310720, 9, 720906, 0, 0, 720905, 0, 0, 720902, 1114112, 9, 720901, 1179648, 9, 720898, 0, 0, 720897, 0, 0, 720896, 1376256, 9, 655371, 1310720, 9, 11, 1310720, 9, 65547, 1310720, 9, 131083, 1310720, 9, 327691, 1179648, 9, 393227, 1114112, 9, 589835, 1310720, 9, 0, 1376256, 9, 65536, 1376256, 9, 131072, 1376256, 9, 6, 1179648, 9, 65541, 1179648, 9, 65542, 1114112, 9, 393218, 1179648, 9, 131073, 1114112, 9, 196609, 1179648, 9, 131074, 1179648, 9, 196610, 1114112, 9, 327680, 1114112, 9, 393216, 1179648, 9, 196619, 1310720, 9, 524299, 1310720, 9, 524288, 1376256, 9, 196608, 1376256, 9, 720899, 0, 0, 720904, 0, 0, 458752, 1114112, 9, 262155, 1114112, 9, 720900, 1114112, 9, 5, 1114112, 9, 65540, 1114112, 9, 7, 1114112, 9, 458763, 1179648, 9, 720903, 1179648, 9, 262144, 1179648, 9, 65543, 1179648, 9, 4, 1179648, 9)
@@ -30,43 +30,42 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 10
 layer_2/tile_data = PackedInt32Array()
-script = ExtResource("2_rddg1")
+script = ExtResource("2_b2rfh")
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2(-1, -8)
 
-[node name="UpDoor" parent="Doors" instance=ExtResource("3_7qi82")]
+[node name="UpDoor" parent="Doors" instance=ExtResource("3_ijhu7")]
 position = Vector2(97, 16)
 metadata/Dir = "up"
 
-[node name="UpDoor2" parent="Doors" instance=ExtResource("3_7qi82")]
+[node name="UpDoor2" parent="Doors" instance=ExtResource("3_ijhu7")]
 position = Vector2(97, 192)
 metadata/Dir = "down"
 
-[node name="LeftDoor" parent="Doors" instance=ExtResource("4_bgd7d")]
+[node name="LeftDoor" parent="Doors" instance=ExtResource("4_ijdpi")]
 position = Vector2(9, 104)
 metadata/Dir = "left"
 
-[node name="LeftDoor2" parent="Doors" instance=ExtResource("4_bgd7d")]
+[node name="LeftDoor2" parent="Doors" instance=ExtResource("4_ijdpi")]
 position = Vector2(185, 104)
 metadata/Dir = "right"
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Coffee_Enemy" parent="Enemies" instance=ExtResource("8_xapim")]
-position = Vector2(96, 104)
+[node name="Normal_Enemy" parent="Enemies" instance=ExtResource("5_11dlp")]
+position = Vector2(96, 103)
 
 [node name="PlayerArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-script = ExtResource("5_xasyb")
+script = ExtResource("7_dcgfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
 position = Vector2(96, 96)
 shape = SubResource("RectangleShape2D_3kfyv")
-debug_color = Color(0, 0.6, 0.701961, 0.494118)
 
-[node name="TMAnimationPlayer" parent="." instance=ExtResource("7_ac5ao")]
+[node name="TMAnimationPlayer" parent="." instance=ExtResource("8_r1psg")]
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
 [connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]

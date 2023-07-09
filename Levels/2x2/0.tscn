@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://divgfp8jntsum"]
+[gd_scene load_steps=9 format=3 uid="uid://divgfp8jntsum"]
 
 [ext_resource type="TileSet" uid="uid://cxv0ufrm8g1f8" path="res://TileMaps/TileMap.tres" id="1_8nqqe"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="2_40o2l"]
+[ext_resource type="PackedScene" uid="uid://bwytb7btfr43o" path="res://Enemies/normal_enemy.tscn" id="3_8qqrh"]
 [ext_resource type="PackedScene" uid="uid://bsw4prf8np2ch" path="res://Scenes/up_door.tscn" id="3_e24fc"]
 [ext_resource type="Script" path="res://Scripts/PlayerArea.gd" id="4_dsqhd"]
 [ext_resource type="PackedScene" uid="uid://c6lyav2tqot1q" path="res://Scenes/left_door.tscn" id="4_tvgol"]
-[ext_resource type="PackedScene" uid="uid://cihq1an3y8nob" path="res://Scenes/tm_animation_player.tscn" id="6_vipsj"]
+[ext_resource type="PackedScene" path="res://Scenes/tm_animation_player.tscn" id="6_vipsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utj5h"]
 size = Vector2(305, 303)
@@ -21,17 +22,29 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(1179663, 458752, 9, 1245199, 458752, 10, 1179664, 917504, 13, 1245200, 917504, 14, 1179665, 983040, 13, 1245201, 983040, 14, 1179666, 458752, 9, 1245202, 458752, 10, 524292, 458752, 9, 589828, 458752, 10, 524293, 917504, 13, 589829, 917504, 14, 524294, 983040, 13, 589830, 983040, 14, 524295, 458752, 9, 589831, 458752, 10)
 layer_2/name = "decorations2"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 10
-layer_2/tile_data = PackedInt32Array()
+layer_2/tile_data = PackedInt32Array(1114130, 917504, 5, 1179666, 917504, 6, 524292, 917504, 6, 458756, 917504, 5)
 script = ExtResource("2_40o2l")
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Normal_Enemy" parent="Enemies" instance=ExtResource("3_8qqrh")]
+position = Vector2(244, 125)
+
+[node name="Normal_Enemy4" parent="Enemies" instance=ExtResource("3_8qqrh")]
+position = Vector2(157, 131)
+
+[node name="Normal_Enemy5" parent="Enemies" instance=ExtResource("3_8qqrh")]
+position = Vector2(158, 225)
+
+[node name="Normal_Enemy7" parent="Enemies" instance=ExtResource("3_8qqrh")]
+position = Vector2(234, 201)
 
 [node name="Doors" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -67,6 +80,7 @@ position = Vector2(360, 272)
 metadata/Dir = "right"
 
 [node name="PlayerArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 script = ExtResource("4_dsqhd")
 

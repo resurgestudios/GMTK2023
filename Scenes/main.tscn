@@ -9,11 +9,11 @@
 [ext_resource type="AudioStream" uid="uid://d4dpb2fnbq4vo" path="res://Sounds/ink splash.mp3" id="5_p6m2f"]
 [ext_resource type="Texture2D" uid="uid://dbnxidfjj146k" path="res://Art/printer_jump..png" id="5_xnxyt"]
 [ext_resource type="AudioStream" uid="uid://dnp780ln4ohd1" path="res://Sounds/printer move.mp3" id="6_f5kj7"]
-[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/MainMap.tscn" id="7_hbgmt"]
+[ext_resource type="PackedScene" uid="uid://cqeqbvojsupqg" path="res://Levels/1.tscn" id="7_hbgmt"]
 [ext_resource type="AudioStream" uid="uid://hq3uyld27ysv" path="res://Sounds/printer hit 1.mp3" id="8_k8b7p"]
 [ext_resource type="Script" path="res://Scripts/InkBar.gd" id="9_8uwy2"]
 [ext_resource type="AudioStream" uid="uid://cv621hnvubs1p" path="res://Sounds/printer hit 2.mp3" id="9_fw1sx"]
-[ext_resource type="PackedScene" path="res://Scenes/flow.tscn" id="9_vg42r"]
+[ext_resource type="PackedScene" uid="uid://b4m2v1tm2gun6" path="res://Scenes/flow.tscn" id="9_vg42r"]
 [ext_resource type="Script" path="res://Scripts/crosshair.gd" id="10_3b070"]
 [ext_resource type="Texture2D" uid="uid://dkse1ngv5ln8s" path="res://Art/bumbu.png" id="10_7gwhk"]
 [ext_resource type="Texture2D" uid="uid://bwixig25j4dys" path="res://Scenes/crosshair.png" id="10_aj1av"]
@@ -379,7 +379,7 @@ texture = ExtResource("2_aoy67")
 
 [node name="MapManager" type="Node2D" parent="."]
 script = ExtResource("1_vxup7")
-variance = 0.0
+variance = 8.0
 
 [node name="TileMap" parent="MapManager" instance=ExtResource("7_hbgmt")]
 
